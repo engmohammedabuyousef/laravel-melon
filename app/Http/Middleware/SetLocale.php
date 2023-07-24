@@ -25,9 +25,11 @@ class SetLocale
         Carbon::setLocale(session('locale'));
 
         if (session('locale') == 'ar') {
-            setDirection('rtl');
+            // setDirection('rtl');
+            config(['settings.KT_THEME_DIRECTION' => 'rtl']);
         } elseif (session('locale') == 'en') {
-            setDirection('ltr');
+            // setDirection('ltr');
+            config(['settings.KT_THEME_DIRECTION' => 'ltr']);
         }
         // dd(getDirection());
 
