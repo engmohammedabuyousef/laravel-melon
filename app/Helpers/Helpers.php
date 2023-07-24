@@ -413,7 +413,7 @@ if (!function_exists('image')) {
      */
     function image($path)
     {
-        return asset('assets/media/'.$path);
+        return asset('assets/media/' . $path);
     }
 }
 
@@ -431,3 +431,5 @@ if (!function_exists('getIcon')) {
         return theme()->getIcon($name, $class, $type);
     }
 }
+
+/* Melon Helpers */
