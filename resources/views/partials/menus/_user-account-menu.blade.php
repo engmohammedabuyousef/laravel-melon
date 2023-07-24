@@ -32,7 +32,7 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-        <a href="#" class="menu-link px-5">My Profile</a>
+        <a href="#" class="menu-link px-5">{{ __('My Profile') }}</a>
     </div>
     <!--end::Menu item-->
 
@@ -44,7 +44,7 @@
     <div class="menu-item px-5">
         <a class="button-ajax menu-link px-5" href="#" data-action="{{ route('logout') }}" data-method="post"
             data-csrf="{{ csrf_token() }}" data-reload="true">
-            Sign Out
+            {{ __('Sign Out') }}
         </a>
     </div>
     <!--end::Menu item-->

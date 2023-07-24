@@ -1,0 +1,8 @@
+- npm run dev --rtl
+
+-- localization --
+- app\Http\Middleware\SetLocale.php
+- in http Kernel
+    - (middlewareGroups => web) \App\Http\Middleware\SetLocale::class,
+    - (routeMiddleware) 'setlocale' => \App\Http\Middleware\SetLocale::class,
+

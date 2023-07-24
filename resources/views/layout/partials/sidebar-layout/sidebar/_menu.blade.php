@@ -9,7 +9,7 @@
 				<!--begin:Menu link-->
 				<span class="menu-link">
 					<span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
-					<span class="menu-title">Dashboard</span>
+					<span class="menu-title">{{ __('Dashboard') }}</span>
 					<span class="menu-arrow"></span>
 				</span>
 				<!--end:Menu link-->
@@ -22,7 +22,7 @@
 							<span class="menu-bullet">
 								<span class="bullet bullet-dot"></span>
 							</span>
-							<span class="menu-title">Default</span>
+							<span class="menu-title">{{ __('Default') }}</span>
 						</a>
 						<!--end:Menu link-->
 					</div>
@@ -36,7 +36,7 @@
 				<!--begin:Menu link-->
 				<span class="menu-link">
 					<span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
-					<span class="menu-title">User Management</span>
+					<span class="menu-title">{{ __('User Management') }}</span>
 					<span class="menu-arrow"></span>
 				</span>
 				<!--end:Menu link-->
@@ -49,7 +49,7 @@
 							<span class="menu-bullet">
 								<span class="bullet bullet-dot"></span>
 							</span>
-							<span class="menu-title">Users</span>
+							<span class="menu-title">{{ __('Users') }}</span>
 							<span class="menu-arrow"></span>
 						</span>
 						<!--end:Menu link-->
@@ -62,7 +62,7 @@
 									<span class="menu-bullet">
 										<span class="bullet bullet-dot"></span>
 									</span>
-									<span class="menu-title">Users List</span>
+									<span class="menu-title">{{ __('Users List') }}</span>
 								</a>
 								<!--end:Menu link-->
 							</div>
@@ -74,7 +74,7 @@
 									<span class="menu-bullet">
 										<span class="bullet bullet-dot"></span>
 									</span>
-									<span class="menu-title">View User</span>
+									<span class="menu-title">{{ __('View User') }}</span>
 								</a>
 								<!--end:Menu link-->
 							</div>
@@ -90,7 +90,7 @@
 							<span class="menu-bullet">
 								<span class="bullet bullet-dot"></span>
 							</span>
-							<span class="menu-title">Roles</span>
+							<span class="menu-title">{{ __('Roles') }}</span>
 							<span class="menu-arrow"></span>
 						</span>
 						<!--end:Menu link-->
@@ -103,7 +103,7 @@
 									<span class="menu-bullet">
 										<span class="bullet bullet-dot"></span>
 									</span>
-									<span class="menu-title">Roles List</span>
+									<span class="menu-title">{{ __('Roles List') }}</span>
 								</a>
 								<!--end:Menu link-->
 							</div>
@@ -115,7 +115,7 @@
 									<span class="menu-bullet">
 										<span class="bullet bullet-dot"></span>
 									</span>
-									<span class="menu-title">View Role</span>
+									<span class="menu-title">{{ __('View Role') }}</span>
 								</a>
 								<!--end:Menu link-->
 							</div>
@@ -131,7 +131,7 @@
 							<span class="menu-bullet">
 								<span class="bullet bullet-dot"></span>
 							</span>
-							<span class="menu-title">Permissions</span>
+							<span class="menu-title">{{ __('Permissions') }}</span>
 						</a>
 						<!--end:Menu link-->
 					</div>
