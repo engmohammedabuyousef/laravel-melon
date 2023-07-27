@@ -25,7 +25,7 @@ return [
     # Theme Direction
     # Value: ltr | rtl
 
-    'KT_THEME_DIRECTION' => 'rtl',
+    'KT_THEME_DIRECTION' => 'ltr',
 
 
     # Keenicons

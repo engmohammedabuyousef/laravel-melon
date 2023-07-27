@@ -10,7 +10,19 @@
     </div> --}}
     <!--end::Notifications-->
 
-    <!--begin::User menu-->
+    <!--begin::Test menu-->
+	<div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
+        <!--begin::Menu wrapper-->
+		<div class="cursor-pointer symbol symbol-70px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+            <div  class="symbol-label fs-3 bg-light-danger text-danger">
+                {{ config()->get('settings.KT_THEME_DIRECTION') }}
+            </div>
+        </div>
+        <!--end::Menu wrapper-->
+    </div>
+    <!--end::Test menu-->
+    
+    <!--begin::Lang menu-->
 	<div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
         <!--begin::Menu wrapper-->
 		<div class="cursor-pointer symbol symbol-70px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
@@ -26,7 +38,7 @@
         </div>
         <!--end::Menu wrapper-->
     </div>
-    <!--end::User menu-->
+    <!--end::Lang menu-->
 
     <!--begin::User menu-->
 	<div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
