@@ -431,5 +431,3 @@ if (!function_exists('getIcon')) {
         return theme()->getIcon($name, $class, $type);
     }
 }
-
-/* Melon Helpers */
