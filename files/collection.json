@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "6684e4b9-4e28-42fa-94e3-c275df4cd5e9",
+		"name": "Melon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13188832"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "lang",
+								"type": "text",
+								"value": "en"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"description": "['password']",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@test.test",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Test Abu Test",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "+97012345678",
+									"type": "text"
+								},
+								{
+									"key": "device_type",
+									"value": "android",
+									"description": "['android', 'ios']",
+									"type": "text"
+								},
+								{
+									"key": "device_id",
+									"value": "4dd830ae43bae5527",
+									"type": "text"
+								},
+								{
+									"key": "fcm_token",
+									"value": "c8HQtQubQTOU1wwKn75zwE%3AAPA91bFqF0G3NaFuY21BgA6TkEX1ls1oPdAea0878HFqFsXDxQzCZZ6o-Ktb8AzbU6ftEcwbNi3JJZcWJTWPV9xTQlHFG4u_TbS1mZTBV9Gjn255kq3vme3N-Yc3KX4bVQ4EdoDfLVEmlo",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "lang",
+								"type": "text",
+								"value": "ar",
+								"disabled": true
+							},
+							{
+								"key": "device-id",
+								"value": "123123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "social",
+									"description": "['password', 'social']",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@test.test",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "device_type",
+									"value": "ios",
+									"description": "['android', 'ios']",
+									"type": "text"
+								},
+								{
+									"key": "device_id",
+									"value": "99E1F5DA-3708-49AA-8DD2-5D273F7AC2E0",
+									"type": "text"
+								},
+								{
+									"key": "fcm_token",
+									"value": "czxiKaPYPEWjoYUjwE-V83:APA91bF0ryKdHkEC5Rc2Q70SaiGNEoe7DP07mS4A7mSU8IbB4McHcHhLaUIfWJ2loYHnnWSY4FSdCheHoFPQEwc0Ie0fcXGQGRc1eZnpaV2sZ8p8-y2bzqbWWGYSV4uGbtZJwpdac41b",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "apple",
+									"description": "['google', 'apple', 'facebook']",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "access_token",
+									"value": "eyJraWQiOiJXNldjT0tCIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwiYXVkIjoiY29tLm5ld3NvbHV0aW9ucy5ibHlza2l0IiwiZXhwIjoxNjkwNTQ4NDE0LCJpYXQiOjE2OTA0NjIwMTQsInN1YiI6IjAwMTk1Ni5mYzQzYTUzNjBkOTA0Y2IzOWQxMTFmOTRmYjgxMGI2Zi4wNjU1IiwiY19oYXNoIjoicU1YYnZZclVnXzBabE1nbFowWGE5dyIsImVtYWlsIjoiaW9zbWFoZXJAaWNsb3VkLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjoidHJ1ZSIsImF1dGhfdGltZSI6MTY5MDQ2MjAxNCwibm9uY2Vfc3VwcG9ydGVkIjp0cnVlfQ.EZnmSj0mOslw6pTFwJKKbso9RbDZVxvq8NRlGtujcKAS6TgnWYHgdd4vkNiVlPHG91a_zu6iSjqF-ZYbndyqoTzriC85ewsMSjHyEPXnAEgn7i4F_GBI6nAof6w7wYZfn7sjDY2KeGS2LnYXKvoZolWx0OGWv4-W4EPgVAX0EvKX_t6PMqSjUZQ17-p7QBCh9puyRbsfhsMjPSR1z7fhHPpq8WC6gNzDP0jQUdikuyjr5_if2A4X19UnAkyqGDpvpnreeZus4jcrglvFloO9-HICcbOCOARPhb1ylkBLq83ky8GYO0Cgyp1w2HbKxfXiJnPR0TRe_B_VxqDxLPx1RA",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/refresh-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Fcm Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "device_type",
+									"value": "ios",
+									"description": "['android', 'ios']",
+									"type": "text"
+								},
+								{
+									"key": "device_id",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "fcm_token",
+									"value": "84654653416546534165468",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/refresh-fcm-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"refresh-fcm-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@test.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/forget",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"forget"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/deactivate-account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deactivate-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/delete-account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"delete-account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Profile Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "X-HTTP-Method-Override",
+								"value": "PUT",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "New Name",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "new@new.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "old_password",
+									"value": "12345678",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "87654321",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password_confirmation",
+									"value": "87654321",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "test-abu-test",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "+97012345678",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({ key: 'Accept', value: 'application/json' });",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
