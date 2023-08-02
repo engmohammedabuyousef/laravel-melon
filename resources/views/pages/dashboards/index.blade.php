@@ -1,20 +1,41 @@
 <x-default-layout>
-    <!--begin::Row-->
     <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
-        <!--begin::Col-->
-        <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-            @include('partials/widgets/cards/_widget-20')
+        <a href="#" class="card bg-dark hoverable card-xl-stretch mb-xl-8">
+            <div class="col-xl-3">
+                <a href="#" class="card bg-warning hoverable card-xl-stretch mb-xl-8">
+                    <!--begin::Body-->
+                    <div class="card-body">
+                        <i class="ki-duotone ki-briefcase text-white fs-2x ms-n1"><span class="path1"></span><span
+                                class="path2"></span></i>
 
-            @include('partials/widgets/cards/_widget-7')
-        </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-            @include('partials/widgets/cards/_widget-17')
+                        <div class="text-white fw-bold fs-2 mb-2 mt-5">
+                            $50,000
+                        </div>
 
-            @include('partials/widgets/lists/_widget-26')
-        </div>
-        <!--end::Col-->
+                        <div class="fw-semibold text-white">
+                            Milestone Reached </div>
+                    </div>
+                    <!--end::Body-->
+                </a>
+            </div>
+
+            <div class="col-xl-3">
+                <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
+                    <!--begin::Body-->
+                    <div class="card-body">
+                        <i class="ki-duotone ki-chart-pie-simple text-white fs-2x ms-n1"><span
+                                class="path1"></span><span class="path2"></span></i>
+
+                        <div class="text-white fw-bold fs-2 mb-2 mt-5">
+                            $50,000
+                        </div>
+
+                        <div class="fw-semibold text-white">
+                            Milestone Reached </div>
+                    </div>
+                    <!--end::Body-->
+                </a>
+            </div>
+        </a>
     </div>
-    <!--end::Row-->
 </x-default-layout>
