@@ -3,11 +3,35 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Eloquents\UserEloquent;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    private $user;
+
+    public function __construct(UserEloquent $userEloquent)
     {
-        return 'hello';
+        $this->user = $userEloquent;
+    }
+
+    public function register(Request $request)
+    {
+        return $this->user->register($request->all());
+    }
+
+    public function login(Request $request)
+    {
+        return $this->user->login($request->all());
+    }
+
+    public function profile($id = null)
+    {
+        return $this->user->getById($id);
+    }
+
+    public function logout(Request $request)
+    {
+        return $this->user->logout($request->all());
     }
 }
