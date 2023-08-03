@@ -83,3 +83,11 @@ function authApiId()
     }
     return null;
 }
+
+function authApi()
+{
+    if (auth()->guard('api')->check()) {
+        return auth()->guard('api')->user();
+    }
+    return null;
+}

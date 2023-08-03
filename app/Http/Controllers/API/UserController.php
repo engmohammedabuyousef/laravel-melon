@@ -30,6 +30,11 @@ class UserController extends Controller
         return $this->user->getById($id);
     }
 
+    public function editProfile(Request $request)
+    {
+        return $this->user->editProfile($request->all());
+    }
+
     public function logout(Request $request)
     {
         return $this->user->logout($request->all());
