@@ -31,12 +31,12 @@ class User extends Authenticatable
         'last_login_at' => 'datetime',
     ];
 
-    public function getProfilePhotoUrlAttribute()
-    {
-        if ($this->photo) {
-            return Storage::url($this->photo);
-        }
+    // public function getPhotoAttribute()
+    // {
+    //     if ($this->photo) {
+    //         return Storage::url($this->photo);
+    //     }
 
-        return $this->photo;
-    }
+    //     return $this->photo;
+    // }
 }
