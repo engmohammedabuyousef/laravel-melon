@@ -66,7 +66,7 @@ class AddUserModal extends Component
             ];
 
             if ($this->avatar) {
-                $data['profile_photo_path'] = $this->avatar->store('avatars', 'public');
+                $data['photo'] = $this->avatar->store('avatars', 'public');
             }
 
             if (!$this->edit_mode) {
@@ -121,7 +121,7 @@ class AddUserModal extends Component
 
         $user = User::find($id);
 
-        $this->saved_avatar = $user->profile_photo_url;
+        $this->saved_avatar = $user->photo;
         $this->name = $user->name;
         $this->email = $user->email;
         $this->role = $user->roles?->first()->name ?? '';

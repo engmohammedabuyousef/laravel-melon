@@ -18,7 +18,7 @@ class User extends Authenticatable
         'email',
         'password',
         'last_login_at',
-        'profile_photo_path',
+        'photo',
     ];
 
     protected $hidden = [
@@ -33,10 +33,10 @@ class User extends Authenticatable
 
     public function getProfilePhotoUrlAttribute()
     {
-        if ($this->profile_photo_path) {
-            return Storage::url($this->profile_photo_path);
+        if ($this->photo) {
+            return Storage::url($this->photo);
         }
 
-        return $this->profile_photo_path;
+        return $this->photo;
     }
 }

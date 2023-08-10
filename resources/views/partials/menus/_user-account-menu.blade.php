@@ -6,20 +6,20 @@
         <div class="menu-content d-flex align-items-center px-3">
             <!--begin::Avatar-->
             <div class="symbol symbol-50px me-5">
-                @if (Auth::user()->profile_photo_url)
-                    <img alt="Logo" src="{{ Auth::user()->profile_photo_url }}" />
+                @if (Auth::guard('admin')->user()->photo)
+                    <img alt="Logo" src="{{ Auth::guard('admin')->user()->photo }}" />
                 @else
                     <div
-                        class="symbol-label fs-3 {{ app(\App\Actions\GetThemeType::class)->handle('bg-light-? text-?', Auth::user()->name) }}">
-                        {{ substr(Auth::user()->name, 0, 1) }}
+                        class="symbol-label fs-3 {{ app(\App\Actions\GetThemeType::class)->handle('bg-light-? text-?', Auth::guard('admin')->user()->name) }}">
+                        {{ substr(Auth::guard('admin')->user()->name, 0, 1) }}
                     </div>
                 @endif
             </div>
             <!--end::Avatar-->
             <!--begin::Username-->
             <div class="d-flex flex-column">
-                <div class="fw-bold d-flex align-items-center fs-5">{{ Auth::user()->name }}</div>
-                <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{ Auth::user()->email }}</a>
+                <div class="fw-bold d-flex align-items-center fs-5">{{ Auth::guard('admin')->user()->name }}</div>
+                <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{ Auth::guard('admin')->user()->email }}</a>
             </div>
             <!--end::Username-->
         </div>

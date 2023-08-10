@@ -31,5 +31,5 @@ Route::group(['prefix' => 'v1'], function () {
 
     // Profile
     Route::get('profile/{id?}', [UserController::class, 'profile']);
-    Route::put('profile', [Api\UserController::class, 'editProfile']);
+    Route::put('profile', [UserController::class, 'editProfile']);
 });

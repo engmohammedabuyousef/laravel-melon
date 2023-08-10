@@ -91,3 +91,20 @@ function authApi()
     }
     return null;
 }
+
+
+function authAdmin()
+{
+    if (auth()->guard('admin')->check()) {
+        return auth()->guard('admin')->user();
+    }
+    return null;
+}
+
+function authAdminId()
+{
+    if (auth()->guard('admin')->check()) {
+        return auth()->guard('admin')->user()->id;
+    }
+    return null;
+}
