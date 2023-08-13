@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\RegisterUserRequest;
 use App\Repositories\Eloquents\UserEloquent;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class UserController extends Controller
         $this->user = $userEloquent;
     }
 
-    public function register(Request $request)
+    public function register(RegisterUserRequest $request)
     {
         return $this->user->register($request->all());
     }

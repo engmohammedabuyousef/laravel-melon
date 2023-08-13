@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Admin;
 use Illuminate\Database\Seeder;
+use Laravel\Passport\Client;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,5 +24,16 @@ class DatabaseSeeder extends Seeder
         $admin->email = 'admin@admin.com';
         $admin->password = bcrypt('password');
         $admin->save();
+
+        $client = new Client();
+        $client->id = '99cbc47b-dea3-475b-b38f-5beb04a0dd5b';
+        $client->secret = 'hJ1OTRMLoukNxKxnhJexEptwKmlWPelihcJbsGxY';
+        $client->name = 'Laravel Password Grant Client';
+        $client->redirect = 'http://localhost';
+        $client->provider = 'users';
+        $client->personal_access_client = false;
+        $client->password_client = true;
+        $client->revoked = false;
+        $client->save();
     }
 }
