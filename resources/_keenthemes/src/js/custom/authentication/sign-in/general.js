@@ -207,8 +207,10 @@ var KTSigninGeneral = function () {
             handleValidation();
 
             if (isValidUrl(submitButton.closest('form').getAttribute('action'))) {
+                console.log('aaaaaa');
                 handleSubmitAjax(); // use for ajax submit
             } else {
+                console.log('bbb');
                 handleSubmitDemo(); // used for demo purposes only
             }
         }

@@ -7,7 +7,7 @@
         <div class="text-center mb-11">
             <!--begin::Title-->
             <h1 class="text-dark fw-bolder mb-3">
-                Sign In
+                Sign Infff
             </h1>
             <!--end::Title-->
         </div>
@@ -29,15 +29,13 @@
         <!--end::Input group--->
 
         <!--begin::Wrapper-->
-        <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
-            <div></div>
-
+        {{-- <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
             <!--begin::Link-->
             <a href="/forgot-password" class="link-primary">
                 Forgot Password ?
             </a>
             <!--end::Link-->
-        </div>
+        </div> --}}
         <!--end::Wrapper-->
 
         <!--begin::Submit button-->
