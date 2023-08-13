@@ -108,3 +108,8 @@ function authAdminId()
     }
     return null;
 }
+
+function assets_url()
+{
+    return url('assets');
+}

@@ -19,22 +19,22 @@ class UsersDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->rawColumns(['user', 'last_login_at'])
+            ->rawColumns(['user'])
             ->editColumn('user', function (User $user) {
                 return view('pages.apps.user-management.users.columns._user', compact('user'));
             })
-            ->editColumn('role', function (User $user) {
-                return ucwords($user->roles->first()?->name);
-            })
-            ->editColumn('last_login_at', function (User $user) {
-                return sprintf('<div class="badge badge-light fw-bold">%s</div>', $user->last_login_at ? $user->last_login_at->diffForHumans() : '-');
-            })
+            // ->editColumn('role', function (User $user) {
+            //     return ucwords($user->roles->first()?->name);
+            // })
+            // ->editColumn('last_login_at', function (User $user) {
+            //     return sprintf('<div class="badge badge-light fw-bold">%s</div>', $user->last_login_at ? $user->last_login_at->diffForHumans() : '-');
+            // })
             ->editColumn('created_at', function (User $user) {
                 return $user->created_at->format('d M Y, h:i a');
             })
-            ->addColumn('action', function (User $user) {
-                return view('pages.apps.user-management.users.columns._actions', compact('user'));
-            })
+            // ->addColumn('action', function (User $user) {
+            //     return view('pages.apps.user-management.users.columns._actions', compact('user'));
+            // })
             ->setRowId('id');
     }
 
@@ -70,15 +70,15 @@ class UsersDataTable extends DataTable
     {
         return [
             Column::make('user')->addClass('d-flex align-items-center')->name('name'),
-            Column::make('role'),
-            Column::make('last_login_at')->title('Last Login'),
+            // Column::make('role'),
+            // Column::make('last_login_at')->title('Last Login'),
             Column::make('created_at')->title('Joined Date'),
-            Column::computed('action')
-                ->addClass('text-end')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
+            // Column::computed('action')
+            //     ->addClass('text-end')
+            //     ->exportable(false)
+            //     ->printable(false)
+            //     ->width(60)
+            //     ->addClass('text-center'),
         ];
     }
 

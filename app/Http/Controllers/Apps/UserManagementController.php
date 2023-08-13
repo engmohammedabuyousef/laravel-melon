@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use DataTables;
+
+
 class UserManagementController extends Controller
 {
     /**
@@ -63,5 +66,32 @@ class UserManagementController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function list()
+    {
+        return view('pages.apps.user-management.users.new-list');
+    }
+
+    public function customersData()
+    {
+        // dd('hiiiiii');
+        // $users = User::all();
+
+        // return datatables()->of($users)->toJson();
+
+            $data = User::latest()->get();
+            return datatables()->of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+
+
+
+
     }
 }

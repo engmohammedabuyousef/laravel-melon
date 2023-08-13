@@ -13,6 +13,9 @@ Route::middleware([])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth:admin');
 
     Route::resource('users', UserManagementController::class);
+    Route::get('customers', [UserManagementController::class, 'list']);
+    Route::get('customers-data', [UserManagementController::class, 'customersData']);
+
 });
 
 Route::get('/error', function () {

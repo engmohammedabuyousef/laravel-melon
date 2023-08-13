@@ -11,7 +11,7 @@
     <!--end::Notifications-->
 
     <!--begin::Test menu-->
-	<div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
+	{{-- <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
         <!--begin::Menu wrapper-->
 		<div class="cursor-pointer symbol symbol-70px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
             <div  class="symbol-label fs-3 bg-light-danger text-danger">
@@ -19,11 +19,11 @@
             </div>
         </div>
         <!--end::Menu wrapper-->
-    </div>
+    </div> --}}
     <!--end::Test menu-->
 
     <!--begin::Lang menu-->
-	<div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
+	{{-- <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
         <!--begin::Menu wrapper-->
 		<div class="cursor-pointer symbol symbol-70px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
             @if(app()->getLocale() == 'ar')
@@ -37,7 +37,7 @@
             @endif
         </div>
         <!--end::Menu wrapper-->
-    </div>
+    </div> --}}
     <!--end::Lang menu-->
 
     <!--begin::User menu-->
