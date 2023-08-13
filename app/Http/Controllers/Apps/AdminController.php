@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Apps;
 use App\DataTables\CustomersDataTable;
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\CreateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 use DataTables;
 
 
-class UserManagementController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,15 +27,23 @@ class UserManagementController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.customers.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        $user = new User();
+        $user->email = $request->email;
+        $user->name = $request->email;
+        $user->username = $request->email;
+        $user->password = $request->email;
+        $user->phone_number = $request->email;
+        $user->save();
+
+        return 'success';
     }
 
     /**

@@ -34,7 +34,7 @@ var KTCustomerViewPaymentTable = function () {
     var deleteRows = () => {
         // Select all delete buttons
         const deleteButtons = table.querySelectorAll('[data-kt-customer-table-filter="delete_row"]');
-        
+
         deleteButtons.forEach(d => {
             // Delete button on click
             d.addEventListener('click', function (e) {

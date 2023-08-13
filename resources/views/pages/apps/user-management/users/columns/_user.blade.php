@@ -1,6 +1,6 @@
 <!--begin:: Avatar -->
 <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-    <a href="{{ route('user-management.users.show', $user) }}">
+    {{-- <a href="{{ route('user-management.users.show', $user) }}"> --}}
         {{-- @if($user->photo)
             <div class="symbol-label">
                 <img src="{{ $user->photo }}" class="w-100"/>
@@ -10,14 +10,14 @@
                 {{ substr($user->name, 0, 1) }}
             </div>
         {{-- @endif --}}
-    </a>
+    {{-- </a> --}}
 </div>
 <!--end::Avatar-->
 <!--begin::User details-->
 <div class="d-flex flex-column">
-    <a href="{{ route('user-management.users.show', $user) }}" class="text-gray-800 text-hover-primary mb-1">
+    {{-- <a href="{{ route('user-management.users.show', $user) }}" class="text-gray-800 text-hover-primary mb-1"> --}}
         {{ $user->name }}
-    </a>
+    {{-- </a> --}}
     <span>{{ $user->email }}</span>
 </div>
 <!--begin::User details-->
