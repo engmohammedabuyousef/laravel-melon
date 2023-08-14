@@ -3,7 +3,6 @@
 namespace App\DataTables;
 
 use App\Models\Admin;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -20,19 +19,22 @@ class AdminsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->rawColumns(['user'])
-            ->editColumn('user', function (Admin $user) {
-                return view('pages.apps.user-management.users.columns._user', compact('user'));
-            })
+            // ->rawColumns(['user'])
+            // ->editColumn('user', function (Admin $user) {
+            //     return view('pages.apps.user-management.users.columns._user', compact('user'));
+            // })
             // ->editColumn('role', function (User $user) {
             //     return ucwords($user->roles->first()?->name);
             // })
             // ->editColumn('last_login_at', function (User $user) {
             //     return sprintf('<div class="badge badge-light fw-bold">%s</div>', $user->last_login_at ? $user->last_login_at->diffForHumans() : '-');
             // })
-            ->editColumn('created_at', function (User $user) {
-                return $user->created_at->format('d M Y, h:i a');
+            ->editColumn('created_at', function (Admin $admin) {
+                return $admin->created_at->format('d M Y, h:i a');
             })
+            // ->editColumn('created_at', function (User $user) {
+            //     return $user->created_at->format('d M Y, h:i a');
+            // })
             // ->addColumn('action', function (User $user) {
             //     return view('pages.apps.user-management.users.columns._actions', compact('user'));
             // })
@@ -43,7 +45,7 @@ class AdminsDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(User $model): QueryBuilder
+    public function query(Admin $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -54,13 +56,13 @@ class AdminsDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('users-table')
+            ->setTableId('admins-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('rtp')
             ->addTableClass('table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer')
             ->setTableHeadClass('text-start text-muted fw-bold fs-7 text-uppercase gs-0')
-            ->orderBy(2)
+            // ->orderBy(1)
             ->drawCallback("function() {" . file_get_contents(resource_path('views/pages//apps/user-management/users/columns/_draw-scripts.js')) . "}");
     }
 
@@ -70,7 +72,8 @@ class AdminsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('user')->addClass('d-flex align-items-center')->name('name'),
+            Column::make('name')->title('Name'),
+            // Column::make('user')->addClass('d-flex align-items-center')->name('name'),
             // Column::make('role'),
             // Column::make('last_login_at')->title('Last Login'),
             Column::make('created_at')->title('Joined Date'),

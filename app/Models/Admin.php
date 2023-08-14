@@ -13,15 +13,14 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Model implements Authenticatable
 {
-    use HasApiTokens, HasFactory, HasRoles, Notifiable;
-    use SoftDeletes;
+    use HasApiTokens, HasFactory, HasRoles, Notifiable, SoftDeletes;
 
     protected $guarded = [];
 
-    public function getCreatedAtAttribute($value)
-    {
-        return Carbon::parse($value)->format('Y-m-d H:i:s');
-    }
+    // public function getCreatedAtAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('Y-m-d H:i:s');
+    // }
 
     public function getAuthIdentifierName()
     {

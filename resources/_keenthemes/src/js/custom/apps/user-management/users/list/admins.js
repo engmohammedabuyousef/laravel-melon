@@ -1,8 +1,8 @@
 "use strict";
 
-var KTUsersList = function () {
+var KTCustomersList = function () {
     // Define shared variables
-    var table = document.getElementById('kt_table_users');
+    var table = document.getElementById('users-table');
     var datatable;
     var toolbarBase;
     var toolbarSelected;
@@ -311,5 +311,5 @@ var KTUsersList = function () {
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
-    KTUsersList.init();
+    KTCustomersList.init();
 });

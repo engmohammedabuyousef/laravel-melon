@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Apps;
 
+use App\DataTables\AdminsDataTable;
 use App\DataTables\CustomersDataTable;
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
@@ -17,9 +18,9 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(UsersDataTable $dataTable)
+    public function index(AdminsDataTable $dataTable)
     {
-        return $dataTable->render('pages.apps.user-management.users.list');
+        return $dataTable->render('admin.admins.index');
     }
 
     /**
@@ -43,7 +44,7 @@ class AdminController extends Controller
         $user->phone_number = $request->email;
         $user->save();
 
-        return 'success';
+        return redirect('/admin/customers')->with('success', 'Data dumped successfully.');
     }
 
     /**
@@ -83,10 +84,11 @@ class AdminController extends Controller
     //     return view('pages.apps.user-management.users.new-list');
     // }
 
-    public function list(CustomersDataTable $dataTable)
+    public function list(AdminsDataTable $dataTable)
     {
-        return $dataTable->render('pages.apps.user-management.users.new-list');
+    return $dataTable->render('admin.admins.index');
     }
+
 
     public function customersData()
     {

@@ -2,7 +2,7 @@
 
 var KTCustomersList = function () {
     // Define shared variables
-    var table = document.getElementById('users-table');
+    var table = document.getElementById('admins-table');
     var datatable;
     var toolbarBase;
     var toolbarSelected;

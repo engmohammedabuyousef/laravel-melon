@@ -19,26 +19,21 @@ class CustomersDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->rawColumns(['user'])
+            ->rawColumns(['user', 'last_login_at'])
             ->editColumn('user', function (User $user) {
                 return view('pages.apps.user-management.users.columns._user', compact('user'));
             })
-            // ->editColumn('role', function (User $user) {
-            //     return ucwords($user->roles->first()?->name);
-            // })
-            // ->editColumn('last_login_at', function (User $user) {
-            //     return sprintf('<div class="badge badge-light fw-bold">%s</div>', $user->last_login_at ? $user->last_login_at->diffForHumans() : '-');
-            // })
+            ->editColumn('last_login_at', function (User $user) {
+                return sprintf('<div class="badge badge-light fw-bold">%s</div>', $user->last_login_at ? $user->last_login_at->diffForHumans() : '-');
+            })
             ->editColumn('created_at', function (User $user) {
-                // dd($user);
                 return $user->created_at->format('d M Y, h:i a');
             })
-            // ->addColumn('action', function (User $user) {
-            //     return view('pages.apps.user-management.users.columns._actions', compact('user'));
-            // })
+            ->addColumn('action', function (User $user) {
+                return view('pages.apps.user-management.users.columns._actions', compact('user'));
+            })
             ->setRowId('id');
     }
-
 
     /**
      * Get the query source of dataTable.
@@ -60,7 +55,7 @@ class CustomersDataTable extends DataTable
             ->dom('rtp')
             ->addTableClass('table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer')
             ->setTableHeadClass('text-start text-muted fw-bold fs-7 text-uppercase gs-0')
-            // ->orderBy(2)
+            ->orderBy(2)
             ->drawCallback("function() {" . file_get_contents(resource_path('views/pages//apps/user-management/users/columns/_draw-scripts.js')) . "}");
     }
 
@@ -71,22 +66,21 @@ class CustomersDataTable extends DataTable
     {
         return [
             Column::make('user')->addClass('d-flex align-items-center')->name('name'),
-            // Column::make('role'),
-            // Column::make('last_login_at')->title('Last Login'),
+            Column::make('last_login_at')->title('Last Login'),
             Column::make('created_at')->title('Joined Date'),
-            // Column::computed('action')
-            //     ->addClass('text-end')
-            //     ->exportable(false)
-            //     ->printable(false)
-            //     ->width(60)
-            //     ->addClass('text-center'),
+            Column::computed('action')
+                ->addClass('text-end')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 
     /**
      * Get the filename for export.
      */
-    protected function filename(): string
+    protected function filefilenamename(): string
     {
         return 'Customers_' . date('YmdHis');
     }

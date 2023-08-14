@@ -21,4 +21,12 @@ document.querySelectorAll('[data-kt-action="update_row"]').forEach(function (ele
 Livewire.on('success', (message) => {
     // Reload the users-table datatable
     LaravelDataTables['users-table'].ajax.reload();
+    LaravelDataTables['admins-table'].ajax.reload();
 });
+
+// Listen for 'success' event emitted by Livewire
+Livewire.on('success', (message) => {
+    // Reload the users-table datatable
+    LaravelDataTables['admins-table'].ajax.reload();
+});
+

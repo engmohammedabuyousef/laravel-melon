@@ -47,11 +47,13 @@
         <script>
             document.getElementById('mySearchInput').addEventListener('keyup', function () {
                 window.LaravelDataTables['users-table'].search(this.value).draw();
+                window.LaravelDataTables['admins-table'].search(this.value).draw();
             });
             document.addEventListener('livewire:load', function () {
                 Livewire.on('success', function () {
                     $('#kt_modal_add_user').modal('hide');
                     window.LaravelDataTables['users-table'].ajax.reload();
+                    window.LaravelDataTables['admins-table'].ajax.reload();
                 });
             });
         </script>
