@@ -17,17 +17,14 @@ Route::middleware([])->group(function () {
 
     // Admins
     Route::get('admins', [AdminController::class, 'list'])->name('admins');
-    // Route::get('admins-data', [AdminController::class, 'adminsData']);
     // Route::get('admins/{id}', [AdminController::class, 'show'])->name('show');
     // Route::get('admins/create', [AdminController::class, 'create'])->name('create');
 
     // Customers
     Route::get('customers', [UserManagementController::class, 'list'])->name('customers');
-    // Route::get('customers-data', [UserManagementController::class, 'customersData']);
     Route::get('customers/create', [AdminController::class, 'create'])->name('create');
     Route::post('customers/create', [AdminController::class, 'store'])->name('customers.store');
     // Route::get('customers/{id}', [UserManagementController::class, 'show'])->name('show');
-
 });
 
 Route::get('/error', function () {
