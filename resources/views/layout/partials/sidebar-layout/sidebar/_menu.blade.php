@@ -40,45 +40,27 @@
 
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click"
-                class="menu-item menu-accordion {{ request()->routeIs('user-management.*') ? 'here show' : '' }}">
+                class="menu-item menu-accordion {{ request()->routeIs('admins') ? 'here show' : '' }}">
                 <!--begin:Menu link-->
                 <span class="menu-link">
-                    <span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
-                    <span class="menu-title">{{ __('User Management') }}</span>
+                    <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
+                    <span class="menu-title">{{ __('Admins') }}</span>
                     <span class="menu-arrow"></span>
                 </span>
                 <!--end:Menu link-->
                 <!--begin:Menu sub-->
                 <div class="menu-sub menu-sub-accordion">
                     <!--begin:Menu item-->
-                    <div data-kt-menu-trigger="click"
-                        class="menu-item menu-accordion mb-1 {{ request()->routeIs('user-management.users.*') ? 'here show' : '' }}">
+                    <div class="menu-item">
                         <!--begin:Menu link-->
-                        <span class="menu-link">
+                        <a class="menu-link {{ request()->routeIs('customers') ? 'active' : '' }}"
+                            href="{{ route('admins') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">{{ __('Users') }}</span>
-                            <span class="menu-arrow"></span>
-                        </span>
+                            <span class="menu-title">{{ __('Admins') }}</span>
+                        </a>
                         <!--end:Menu link-->
-                        <!--begin:Menu sub-->
-                        <div class="menu-sub menu-sub-accordion">
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link {{ request()->routeIs('users.index') ? 'active' : '' }}"
-                                    href="{{ route('users.index') }}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">{{ __('Users List') }}</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                        </div>
-                        <!--end:Menu sub-->
                     </div>
                     <!--end:Menu item-->
                 </div>
@@ -115,37 +97,6 @@
                 <!--end:Menu sub-->
             </div>
             <!--end:Menu item-->
-
-            <!--begin:Menu item-->
-            <div data-kt-menu-trigger="click"
-                class="menu-item menu-accordion {{ request()->routeIs('admins') ? 'here show' : '' }}">
-                <!--begin:Menu link-->
-                <span class="menu-link">
-                    <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
-                    <span class="menu-title">{{ __('Admins') }}</span>
-                    <span class="menu-arrow"></span>
-                </span>
-                <!--end:Menu link-->
-                <!--begin:Menu sub-->
-                <div class="menu-sub menu-sub-accordion">
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('customers') ? 'active' : '' }}"
-                            href="{{ route('admins') }}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">{{ __('Admins') }}</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-                </div>
-                <!--end:Menu sub-->
-            </div>
-            <!--end:Menu item-->
-
         </div>
         <!--end::Menu-->
     </div>
