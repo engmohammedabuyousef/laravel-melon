@@ -7,7 +7,7 @@
         <div class="text-center mb-11">
             <!--begin::Title-->
             <h1 class="text-dark fw-bolder mb-3">
-                Sign Infff
+                Sign In
             </h1>
             <!--end::Title-->
         </div>
