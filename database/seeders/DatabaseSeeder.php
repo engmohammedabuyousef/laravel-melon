@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $admin->name = 'Admin';
         $admin->email = 'admin@admin.com';
         $admin->password = bcrypt('password');
+        $admin->last_login_at = now();
         $admin->save();
 
         $client = new Client();

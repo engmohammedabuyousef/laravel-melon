@@ -6,15 +6,19 @@
                 <!--begin::Card-->
                 <div class="card card-custom">
                     <!--begin::Card toolbar-->
-                    <div class="card-toolbar">
+                    <div class="card-toolbar m-4">
+                        <!--begin::Title-->
+                        <div class="m-4">
+                            <h3>{{ $title }}</h3>
+                        </div>
+                        <!--end::Title-->
                         <!--begin::Toolbar-->
-                        {{-- <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                            <a href="/admin/customers/create" class="btn btn-primary">
+                        <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                            <a href="/admin/admins/create" class="btn btn-primary">
                                 {!! getIcon('plus', 'fs-2') !!}
-                                Add User
+                                {{ __('dashboard.add_admin') }}
                             </a>
-                        </div> --}}
-
+                        </div>
                         <!--end::Toolbar-->
 
                         <!--begin::Modal-->

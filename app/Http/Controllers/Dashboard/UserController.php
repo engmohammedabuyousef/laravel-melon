@@ -2,25 +2,23 @@
 
 namespace App\Http\Controllers\Apps;
 
-use App\DataTables\AdminsDataTable;
 use App\DataTables\CustomersDataTable;
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Users\CreateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 use DataTables;
 
 
-class AdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(AdminsDataTable $dataTable)
+    public function index(UsersDataTable $dataTable)
     {
-        return $dataTable->render('admin.admins.index');
+        return $dataTable->render('pages.apps.user-management.users.list');
     }
 
     /**
@@ -28,23 +26,15 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.customers.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateUserRequest $request)
+    public function store(Request $request)
     {
-        $user = new User();
-        $user->email = $request->email;
-        $user->name = $request->email;
-        $user->username = $request->email;
-        $user->password = $request->email;
-        $user->phone_number = $request->email;
-        $user->save();
-
-        return redirect('/admin/customers')->with('success', 'Data dumped successfully.');
+        //
     }
 
     /**
@@ -84,11 +74,10 @@ class AdminController extends Controller
     //     return view('pages.apps.user-management.users.new-list');
     // }
 
-    public function list(AdminsDataTable $dataTable)
+    public function list(CustomersDataTable $dataTable)
     {
-    return $dataTable->render('admin.admins.index');
+        return $dataTable->render('pages.apps.user-management.users.new-list');
     }
-
 
     public function customersData()
     {

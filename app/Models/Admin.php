@@ -17,10 +17,22 @@ class Admin extends Model implements Authenticatable
 
     protected $guarded = [];
 
-    // public function getCreatedAtAttribute($value)
-    // {
-    //     return Carbon::parse($value)->format('Y-m-d H:i:s');
-    // }
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d H:i:s');
+    }
+
+    public function getLastLoginAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d H:i:s');
+    }
+
+    public function getPhotoAttribute($value)
+    {
+        return 'https://placehold.co/600x400/EEE/31343C';
+    }
+
+    //
 
     public function getAuthIdentifierName()
     {

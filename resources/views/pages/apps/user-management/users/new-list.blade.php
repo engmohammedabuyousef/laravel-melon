@@ -14,7 +14,6 @@
                                 Add User
                             </a>
                         </div>
-
                         <!--end::Toolbar-->
 
                         <!--begin::Modal-->

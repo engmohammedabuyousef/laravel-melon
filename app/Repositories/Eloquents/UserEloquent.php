@@ -176,47 +176,47 @@ class UserEloquent
 
     function editProfile(array $data)
     {
-        $message = __('app.updated');
+        // $message = __('app.updated');
 
-        $user = authApi();
+        // $user = authApi();
 
-        if (isset($data['name'])) {
-            $user->name = $data['name'];
-        }
-
-        if (isset($data['username'])) {
-            // if ($user->is_change_username)
-            //     return response_api(false, 422, __('app.once-change-username'), []);
-            // $user->is_change_username = $user->username <> $data['username'];
-            $user->username = $data['username'];
-        }
-
-        if (isset($data['phone_number'])) {
-            $user->phone_number = $data['phone_number'];
-        }
-
-        if (isset($data['password'])) {
-
-            // if (!isset($user->password) || isset($data['old_password']) && Hash::check($data['old_password'], $user->password)) {
-            //     $user->password = bcrypt($data['password']);
-            //     $message = __('app.password_updated');
-            // } else {
-            //     return response_api(false, 422, __('app.password_not_match'), empObj());
-            // }
-        }
-
-        if (isset($data['photo'])) {
-            // $user->photo = $this->storeImage('users', 'photo');
-        }
-
-        // if ($user->save()) {
-        //     return response_api(true, 200, __('app.success_action', ['action' => $message]), new UserResource($user->fresh()));
+        // if (isset($data['name'])) {
+        //     $user->name = $data['name'];
         // }
 
-        return response_api(false, 422, null, empObj());
+        // if (isset($data['username'])) {
+        //     // if ($user->is_change_username)
+        //     //     return response_api(false, 422, __('app.once-change-username'), []);
+        //     // $user->is_change_username = $user->username <> $data['username'];
+        //     $user->username = $data['username'];
+        // }
+
+        // if (isset($data['phone_number'])) {
+        //     $user->phone_number = $data['phone_number'];
+        // }
+
+        // if (isset($data['password'])) {
+
+        //     // if (!isset($user->password) || isset($data['old_password']) && Hash::check($data['old_password'], $user->password)) {
+        //     //     $user->password = bcrypt($data['password']);
+        //     //     $message = __('app.password_updated');
+        //     // } else {
+        //     //     return response_api(false, 422, __('app.password_not_match'), empObj());
+        //     // }
+        // }
+
+        // if (isset($data['photo'])) {
+        //     // $user->photo = $this->storeImage('users', 'photo');
+        // }
+
+        // // if ($user->save()) {
+        // //     return response_api(true, 200, __('app.success_action', ['action' => $message]), new UserResource($user->fresh()));
+        // // }
+
+        // return response_api(false, 422, null, empObj());
     }
 
-    /*
+/*
     function refreshToken()
     {
         $proxy = Request::create('oauth/token', 'POST');

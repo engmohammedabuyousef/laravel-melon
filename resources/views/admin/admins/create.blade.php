@@ -1,5 +1,5 @@
 <x-default-layout>
-    <form action="{{ route('users.store') }}" method="POST">
+    <form action="{{ route('admins.store') }}" method="POST">
         @csrf
 
         <label for="name">Name:</label>

@@ -14,7 +14,7 @@
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
-                    <span class="menu-title">{{ __('Dashboard') }}</span>
+                    <span class="menu-title">{{ __('dashboard.dashboard') }}</span>
                     <span class="menu-arrow"></span>
                 </span>
                 <!--end:Menu link-->
@@ -28,7 +28,7 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">{{ __('Dashboard') }}</span>
+                            <span class="menu-title">{{ __('dashboard.dashboard') }}</span>
                         </a>
                         <!--end:Menu link-->
                     </div>
@@ -54,7 +54,7 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link {{ request()->routeIs('customers') ? 'active' : '' }}"
-                            href="{{ route('admins') }}">
+                            href="{{ route('admins.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -84,7 +84,7 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link {{ request()->routeIs('customers') ? 'active' : '' }}"
-                            href="{{ route('customers') }}">
+                            href="{{ route('users') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
