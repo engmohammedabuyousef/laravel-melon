@@ -16,12 +16,12 @@ class AdminController extends Controller
             'title' => __('dashboard.admins_list'),
         ];
 
-        return $dataTable->render('admin.admins.index', $data);
+        return $dataTable->render('dashboard.admins.index', $data);
     }
 
     public function create()
     {
-        return view('admin.admins.create');
+        return view('dashboard.admins.create');
     }
 
     public function store(CreateAdminRequest $request)
@@ -37,7 +37,7 @@ class AdminController extends Controller
 
     public function show(Admin $admin)
     {
-        return view('admin.admins.show', compact('admin'));
+        return view('dashboard.admins.show', compact('admin'));
     }
 
     public function edit(Admin $admin)

@@ -49,7 +49,7 @@ class UsersDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('customers-table')
+            ->setTableId('users-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('rtp')
@@ -82,6 +82,6 @@ class UsersDataTable extends DataTable
      */
     protected function filefilenamename(): string
     {
-        return 'Customers_' . date('YmdHis');
+        return 'Users_' . date('YmdHis');
     }
 }

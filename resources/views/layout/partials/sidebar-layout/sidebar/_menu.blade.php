@@ -70,11 +70,11 @@
 
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click"
-                class="menu-item menu-accordion {{ request()->routeIs('customers') ? 'here show' : '' }}">
+                class="menu-item menu-accordion {{ request()->routeIs('users') ? 'here show' : '' }}">
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
-                    <span class="menu-title">{{ __('Customers') }}</span>
+                    <span class="menu-title">{{ __('Users') }}</span>
                     <span class="menu-arrow"></span>
                 </span>
                 <!--end:Menu link-->
@@ -83,12 +83,12 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('customers') ? 'active' : '' }}"
-                            href="{{ route('users') }}">
+                        <a class="menu-link {{ request()->routeIs('users') ? 'active' : '' }}"
+                            href="{{ route('users.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">{{ __('Customers') }}</span>
+                            <span class="menu-title">{{ __('Users') }}</span>
                         </a>
                         <!--end:Menu link-->
                     </div>

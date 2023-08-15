@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Dashboard\AdminController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([])->group(function () {
@@ -20,11 +21,13 @@ Route::middleware([])->group(function () {
     Route::post('admins/update', [AdminController::class, 'update'])->name('admins.update');
     Route::get('admins/{id}', [AdminController::class, 'show'])->name('admins.show');
 
-    // Customers
-    Route::get('users', [UserContr::class, 'list'])->name('users');
-    Route::get('users/create', [AdminController::class, 'create'])->name('create');
-    Route::post('users/create', [AdminController::class, 'store'])->name('users.store');
-    // Route::get('customers/{id}', [UserManagementController::class, 'show'])->name('show');
+    // Users
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('users/store', [UserController::class, 'store'])->name('users.store');
+    Route::get('users/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('users/update', [UserController::class, 'update'])->name('users.update');
+    Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
 });
 
 Route::get('/error', function () {

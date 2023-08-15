@@ -23,8 +23,8 @@ class AdminsDataTable extends DataTable
             ->editColumn('photo', function (Admin $admin) {
                 return "<img src='$admin->photo' alt='Admin Photo' width='100' height='100'>";
             })
-            ->addColumn('action', function (Admin $admin) {
-                return view('admin.admins.actions', compact('admin'));
+            ->addColumn('actions', function (Admin $admin) {
+                return view('dashboard.admins.actions', compact('admin'));
             })
             ->setRowId('id');
     }
@@ -64,7 +64,7 @@ class AdminsDataTable extends DataTable
             Column::make('email')->title('Email'),
             Column::make('last_login_at')->title('Last Login'),
             Column::make('created_at')->title('Joined Date'),
-            Column::computed('action')
+            Column::computed('actions')
                 ->addClass('text-end')
                 ->exportable(false)
                 ->printable(false)

@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Apps;
+namespace App\Http\Controllers\Dashboard;
 
-use App\DataTables\CustomersDataTable;
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-
-use DataTables;
-
 
 class UserController extends Controller
 {
@@ -18,7 +14,11 @@ class UserController extends Controller
      */
     public function index(UsersDataTable $dataTable)
     {
-        return $dataTable->render('pages.apps.user-management.users.list');
+        $data = [
+            'title' => __('dashboard.users_list'),
+        ];
+
+        return $dataTable->render('dashboard.users.index', $data);
     }
 
     /**
@@ -42,7 +42,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('pages.apps.user-management.users.show', compact('user'));
+        return view('dashboard.users.show', compact('user'));
     }
 
     /**
@@ -67,37 +67,5 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
-    }
-
-    // public function list()
-    // {
-    //     return view('pages.apps.user-management.users.new-list');
-    // }
-
-    public function list(CustomersDataTable $dataTable)
-    {
-        return $dataTable->render('pages.apps.user-management.users.new-list');
-    }
-
-    public function customersData()
-    {
-        // dd('hiiiiii');
-        // $users = User::all();
-
-        // return datatables()->of($users)->toJson();
-
-            $data = User::latest()->get();
-            return datatables()->of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-
-
-
-
     }
 }
