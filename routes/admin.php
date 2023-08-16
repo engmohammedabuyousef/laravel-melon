@@ -17,8 +17,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('admins', [AdminController::class, 'index'])->name('admins.index');
     Route::get('admins/create', [AdminController::class, 'create'])->name('admins.create');
     Route::post('admins/store', [AdminController::class, 'store'])->name('admins.store');
-    Route::get('admins/edit', [AdminController::class, 'edit'])->name('admins.edit');
-    Route::post('admins/update', [AdminController::class, 'update'])->name('admins.update');
+    Route::get('admins/{id}/edit', [AdminController::class, 'edit'])->name('admins.edit');
+    Route::post('admins/{id}/update', [AdminController::class, 'update'])->name('admins.update');
     Route::get('admins/{id}', [AdminController::class, 'show'])->name('admins.show');
 
     // Users
@@ -26,7 +26,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('users/store', [UserController::class, 'store'])->name('users.store');
     Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::post('users/update', [UserController::class, 'update'])->name('users.update');
+    Route::post('users/{id}/update', [UserController::class, 'update'])->name('users.update');
     Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
 
     // Notifications
