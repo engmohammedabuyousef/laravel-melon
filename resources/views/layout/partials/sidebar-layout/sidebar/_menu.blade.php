@@ -53,7 +53,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('customers') ? 'active' : '' }}"
+                        <a class="menu-link {{ request()->routeIs('admins') ? 'active' : '' }}"
                             href="{{ route('admins.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
