@@ -7,6 +7,28 @@
 	},
 	"item": [
 		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Lookups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/lookups",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lookups"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Auth",
 			"item": [
 				{
@@ -29,12 +51,12 @@
 								{
 									"key": "grant_type",
 									"value": "password",
-									"description": "['password']",
+									"description": "['password', 'social']",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "test@test.test",
+									"value": "test@test.com",
 									"type": "text"
 								},
 								{
@@ -54,7 +76,7 @@
 								},
 								{
 									"key": "phone_number",
-									"value": "+97012345678",
+									"value": "+970123456789",
 									"type": "text"
 								},
 								{
@@ -122,18 +144,18 @@
 							"formdata": [
 								{
 									"key": "grant_type",
-									"value": "social",
+									"value": "password",
 									"description": "['password', 'social']",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "test@test.test",
+									"value": "test@test.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "12345678",
+									"value": "password",
 									"type": "text"
 								},
 								{
@@ -305,12 +327,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/forget",
+							"raw": "{{url}}/forget-password",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"forget"
+								"forget-password"
 							]
 						}
 					},
@@ -345,6 +367,27 @@
 							],
 							"path": [
 								"delete-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Phone Number",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "123456",
+									"type": "text"
+								}
 							]
 						}
 					},
