@@ -36,9 +36,9 @@ class UserController extends Controller
     public function store(CreateUserRequest $request)
     {
         $user = new User();
-        $user->name = $request->email;
+        $user->name = $request->name;
         $user->username = $request->email;
-        $user->phone_number = $request->email;
+        $user->phone_number = $request->phone_number;
         $user->email = $request->email;
         $user->password = bcrypt('password');
         $user->last_login_at = now();
