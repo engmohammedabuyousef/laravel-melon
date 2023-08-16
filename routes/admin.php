@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware([])->group(function () {
-    Route::get('/', function () {
-        return redirect()->route('dashboard');
-    });
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
+
+Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth:admin');
 
@@ -28,12 +28,14 @@ Route::middleware([])->group(function () {
     Route::get('users/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::post('users/update', [UserController::class, 'update'])->name('users.update');
     Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
+
+    // Notifications
 });
 
 Route::get('/error', function () {
     abort(500);
 });
 
-Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
+// Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
 
-require __DIR__ . '/auth.php';
+require __DIR__ . '/admin-auth.php';
