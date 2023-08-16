@@ -27,13 +27,13 @@
     <!--end::Menu item-->
 
     <!--begin::Menu separator-->
-    <div class="separator my-2"></div>
+    {{-- <div class="separator my-2"></div> --}}
     <!--end::Menu separator-->
 
     <!--begin::Menu item-->
-    <div class="menu-item px-5">
+    {{-- <div class="menu-item px-5">
         <a href="#" class="menu-link px-5">{{ __('My Profile') }}</a>
-    </div>
+    </div> --}}
     <!--end::Menu item-->
 
     <!--begin::Menu separator-->
