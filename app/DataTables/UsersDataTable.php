@@ -29,8 +29,8 @@ class UsersDataTable extends DataTable
             ->editColumn('created_at', function (User $user) {
                 return $user->created_at->format('d M Y, h:i a');
             })
-            ->addColumn('action', function (User $user) {
-                return view('pages.apps.user-management.users.columns._actions', compact('user'));
+            ->addColumn('actions', function (User $user) {
+                return view('dashboard.users.actions', compact('user'));
             })
             ->setRowId('id');
     }
@@ -68,7 +68,7 @@ class UsersDataTable extends DataTable
             Column::make('user')->addClass('d-flex align-items-center')->name('name'),
             Column::make('last_login_at')->title('Last Login'),
             Column::make('created_at')->title('Joined Date'),
-            Column::computed('action')
+            Column::computed('actions')
                 ->addClass('text-end')
                 ->exportable(false)
                 ->printable(false)
