@@ -15,7 +15,6 @@
                         <!--begin::Toolbar-->
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                             <a href="/admin/admins/create" class="btn btn-primary">
-                                {!! getIcon('plus', 'fs-2') !!}
                                 {{ __('dashboard.add_admin') }}
                             </a>
                         </div>

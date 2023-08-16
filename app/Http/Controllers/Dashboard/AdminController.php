@@ -6,52 +6,50 @@ use App\DataTables\AdminsDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admins\CreateAdminRequest;
 use App\Models\Admin;
+use App\Repositories\Eloquents\AdminEloquent;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    private $admin;
+
+    public function __construct(AdminEloquent $adminEloquent)
+    {
+        $this->admin = $adminEloquent;
+    }
+
     public function index(AdminsDataTable $dataTable)
     {
-        $data = [
-            'title' => __('dashboard.admins_list'),
-        ];
-
-        return $dataTable->render('dashboard.admins.index', $data);
+        return $this->admin->index($dataTable);
     }
 
     public function create()
     {
-        return view('dashboard.admins.create');
+        return $this->admin->create();
     }
 
     public function store(CreateAdminRequest $request)
     {
-        $admin = new Admin();
-        $admin->email = $request->email;
-        $admin->name = $request->email;
-        $admin->password = $request->email;
-        $admin->save();
-
-        return redirect('/admin/admins')->with('success', 'Admin created successfully');
+        return $this->admin->store($request->all());
     }
 
     public function show(Admin $admin)
     {
-        return view('dashboard.admins.show', compact('admin'));
+        return $this->admin->show($admin);
     }
 
     public function edit(Admin $admin)
     {
-        return 'edit';
+        return $this->admin->edit($admin);
     }
 
     public function update(Request $request, Admin $admin)
     {
-        //
+        return $this->admin->update($request->all(), $admin);
     }
 
     public function destroy(Admin $admin)
     {
-        //
+        return $this->admin->destroy($admin);
     }
 }

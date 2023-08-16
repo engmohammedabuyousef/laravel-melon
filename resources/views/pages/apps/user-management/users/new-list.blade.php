@@ -10,7 +10,6 @@
                         <!--begin::Toolbar-->
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                             <a href="/admin/customers/create" class="btn btn-primary">
-                                {!! getIcon('plus', 'fs-2') !!}
                                 Add User
                             </a>
                         </div>

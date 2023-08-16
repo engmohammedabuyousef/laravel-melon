@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\CreateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -26,15 +27,24 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.users.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->email;
+        $user->username = $request->email;
+        $user->phone_number = $request->email;
+        $user->email = $request->email;
+        $user->password = bcrypt('password');
+        $user->last_login_at = now();
+        $user->save();
+
+        return redirect('/admin/users')->with('success', 'User created successfully');
     }
 
     /**

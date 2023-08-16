@@ -8,6 +8,10 @@ class GeneralController extends Controller
 {
     public function lookups()
     {
-        return 'lookups';
+        $data = [
+            'app_name' => 'Melon',
+        ];
+
+        return response_api(true, 200, null, $data);
     }
 }

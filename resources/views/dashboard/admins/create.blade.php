@@ -13,7 +13,6 @@
         <!-- Add more input fields for other user attributes as needed -->
 
         <button type="submit" class="btn btn-primary">
-            {!! getIcon('plus', 'fs-2') !!}
             Add User
         </button>
     </form>
