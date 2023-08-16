@@ -21,7 +21,12 @@ class AdminsDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->rawColumns(['photo'])
             ->editColumn('photo', function (Admin $admin) {
-                return "<img src='$admin->photo' alt='Admin Photo' width='100' height='100'>";
+                if($admin->photo){
+
+                    return "<img src='$admin->photo' alt='Admin Photo' width='100' height='100'>";
+                } else {
+                    return view('dashboard.admins.photo');
+                               }
             })
             ->addColumn('actions', function (Admin $admin) {
                 return view('dashboard.admins.actions', compact('admin'));
