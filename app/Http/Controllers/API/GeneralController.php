@@ -9,7 +9,7 @@ class GeneralController extends Controller
     public function lookups()
     {
         $data = [
-            'app_name' => 'Melon',
+            'app_name' => env('APP_NAME'),
         ];
 
         return response_api(true, 200, null, $data);

@@ -5,7 +5,7 @@
 		<!--begin::Copyright-->
 		<div class="text-dark order-2 order-md-1">
 			<span class="text-muted fw-semibold me-1">{{ date('Y') }}&copy;</span>
-            <a class="text-gray-800 text-hover-primary" style="cursor: pointer;">Melon</a>
+            <a class="text-gray-800 text-hover-primary" style="cursor: pointer;">{{ env('APP_NAME') }}</a>
 		</div>
 		<!--end::Copyright-->
 	</div>
