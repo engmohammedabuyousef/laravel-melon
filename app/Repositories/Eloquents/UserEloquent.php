@@ -4,7 +4,6 @@ namespace App\Repositories\Eloquents;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -80,12 +79,12 @@ class UserEloquent
 
         $response = Route::dispatch($request);
 
-        $data = json_decode($response->getContent());
+        $content = json_decode($response->getContent());
 
         $statusCode = json_decode($response->getStatusCode());
 
         if ($statusCode == 200) {
-            $user = $data->items;
+            $user = $content->items;
         }
 
         if (!isset($user)) {
@@ -98,11 +97,11 @@ class UserEloquent
 
         $user = $this->model->find($user->id);
 
-        $user->last_login_at = Carbon::now();
+        $user->last_login_at = now();
 
         $user->save();
 
-        // saveFcmToken($user, \request()->get('fcm_token'), \request()->get('device_id'), \request()->get('device_type'), $user->type);
+        saveFcmToken($user, $data['fcm_token'], $data['device_id'], $data['device_type'], 'user');
 
         $token = new \stdClass();
 
@@ -111,12 +110,12 @@ class UserEloquent
         $token->access_token = $token_obj->access_token;
         $token->refresh_token = $token_obj->refresh_token;
 
-        return [
-            'status' => true,
-            'statusCode' => 200,
-            'message' => __('app.success'),
-            'items' => ['token' => $token, 'user' => new UserResource($user)]
+        $result = [
+            'token' => $token,
+            'user' => new UserResource($user),
         ];
+
+        return response_api(true, 200, null, $result);
     }
 
     function logout($user_id = null)
@@ -216,7 +215,7 @@ class UserEloquent
         // return response_api(false, 422, null, empObj());
     }
 
-/*
+    /*
     function refreshToken()
     {
         $proxy = Request::create('oauth/token', 'POST');

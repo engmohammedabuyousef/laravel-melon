@@ -113,3 +113,36 @@ function assets_url()
 {
     return url('assets');
 }
+
+function saveFcmToken($user, $fcmToken, $deviceId, $deviceType, $authType)
+{
+    if (isset($deviceType)) {
+        $device = \App\Models\FcmToken::where('auth_id', $user->id)->where('device_id', $deviceId)->first();
+
+        if (!isset($device)) {
+            $device = new \App\Models\FcmToken();
+        }
+
+        $device->auth_id = $user->id;
+
+        if (isset($deviceId)) {
+            $device->device_id = $deviceId;
+        }
+
+        $device->fcm_token = $fcmToken;
+        $device->device_type = $deviceType;
+        $device->auth_type = $authType;
+
+        $device->save();
+    }
+}
+
+function page_count($num_object, $page_size)
+{
+    return ceil($num_object / (doubleval($page_size)));
+}
+
+function max_pagination($record = 10.0)
+{
+    return $record;
+}
