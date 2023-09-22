@@ -14,28 +14,28 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth:admin');
 
     // Admins
-    Route::get('admins', [AdminController::class, 'index'])->name('admins.index');
-    Route::get('admins/create', [AdminController::class, 'create'])->name('admins.create');
-    Route::post('admins/store', [AdminController::class, 'store'])->name('admins.store');
-    Route::get('admins/{id}/edit', [AdminController::class, 'edit'])->name('admins.edit');
-    Route::post('admins/{id}/update', [AdminController::class, 'update'])->name('admins.update');
-    Route::get('admins/{id}', [AdminController::class, 'show'])->name('admins.show');
+    Route::prefix('admins')->name('admins.')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('create', [AdminController::class, 'create'])->name('create');
+        Route::post('store', [AdminController::class, 'store'])->name('store');
+        Route::get('{id}/edit', [AdminController::class, 'edit'])->name('edit');
+        Route::post('{id}/update', [AdminController::class, 'update'])->name('update');
+        Route::get('{id}', [AdminController::class, 'show'])->name('show');
+    });
 
     // Users
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
-    Route::get('users/create', [UserController::class, 'create'])->name('users.create');
-    Route::post('users/store', [UserController::class, 'store'])->name('users.store');
-    Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::post('users/{id}/update', [UserController::class, 'update'])->name('users.update');
-    Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
-
-    // Notifications
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('create', [UserController::class, 'create'])->name('create');
+        Route::post('store', [UserController::class, 'store'])->name('store');
+        Route::get('{id}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::post('{id}/update', [UserController::class, 'update'])->name('update');
+        Route::get('{id}', [UserController::class, 'show'])->name('show');
+    });
 });
 
 Route::get('/error', function () {
     abort(500);
 });
-
-// Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
 
 require __DIR__ . '/admin-auth.php';
