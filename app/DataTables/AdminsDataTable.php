@@ -19,14 +19,8 @@ class AdminsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->rawColumns(['photo'])
-            ->editColumn('photo', function (Admin $admin) {
-                if($admin->photo){
-
-                    return "<img src='$admin->photo' alt='Admin Photo' width='100' height='100'>";
-                } else {
-                    return view('dashboard.admins.photo');
-                               }
+            ->addColumn('info', function (Admin $admin) {
+                return view('dashboard.admins.info', compact('admin'));
             })
             ->addColumn('actions', function (Admin $admin) {
                 return view('dashboard.admins.actions', compact('admin'));
@@ -64,9 +58,7 @@ class AdminsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('photo')->title('Photo'),
-            Column::make('name')->title('Name'),
-            Column::make('email')->title('Email'),
+            Column::make('info')->title('info'),
             Column::make('last_login_at')->title('Last Login'),
             Column::make('created_at')->title('Joined Date'),
             Column::computed('actions')

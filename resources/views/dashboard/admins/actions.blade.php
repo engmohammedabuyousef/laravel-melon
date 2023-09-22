@@ -1,11 +1,22 @@
-<div class="menu-item px-3">
-    <a href="/admin/admins/{{ $admin->id }}" class="menu-link px-3">
-        Show
-    </a>
-    <a href="{{ route('admins.edit', ['id' => $admin->id]) }}" class="menu-link px-3" data-kt-user-id="{{ $admin->id }}">
-        Edit
-    </a>
-    <a href="#" class="menu-link px-3" data-kt-admin-id="{{ $admin->id }}" data-kt-action="delete_row">
-        Delete
-    </a>
-</div>
+<a href="/admin/admins/{{ $admin->id }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+    <i class="ki-duotone ki-switch fs-2">
+        <span class="path1"></span>
+        <span class="path2"></span>
+    </i>
+</a>
+
+<a href="{{ route('admins.edit', ['id' => $admin->id]) }}"
+    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+    <i class="ki-duotone ki-pencil fs-2">
+        <span class="path1"></span>
+        <span class="path2"></span></i>
+</a>
+
+<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+    <i class="ki-duotone ki-trash fs-2"><span class="path1"></span>
+        <span class="path2"></span>
+        <span class="path3"></span>
+        <span class="path4"></span>
+        <span class="path5"></span>
+    </i>
+</a>
