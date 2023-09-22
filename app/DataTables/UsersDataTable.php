@@ -21,7 +21,7 @@ class UsersDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->rawColumns(['user', 'last_login_at'])
             ->editColumn('user', function (User $user) {
-                return view('dashboard.users._user', compact('user'));
+                return view('dashboard.users.info', compact('user'));
             })
             ->editColumn('last_login_at', function (User $user) {
                 return sprintf('<div class="badge badge-light fw-bold">%s</div>', $user->last_login_at ? $user->last_login_at->diffForHumans() : '-');

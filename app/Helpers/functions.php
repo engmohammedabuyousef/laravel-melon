@@ -146,3 +146,8 @@ function max_pagination($record = 10.0)
 {
     return $record;
 }
+
+function storage_public($path)
+{
+    return (isset($path)) ? url('/storage/' . $path) : null;
+}

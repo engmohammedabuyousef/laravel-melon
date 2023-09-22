@@ -17,22 +17,12 @@ class Admin extends Model implements Authenticatable
 
     protected $guarded = [];
 
-    public function getCreatedAtAttribute($value)
-    {
-        return Carbon::parse($value)->format('Y-m-d H:i:s');
-    }
+    protected $hidden = ['password', 'remember_token'];
 
-    public function getLastLoginAtAttribute($value)
-    {
-        return Carbon::parse($value)->format('Y-m-d H:i:s');
-    }
-
-    // public function getPhotoAttribute($value)
-    // {
-    //     return 'https://placehold.co/600x400/EEE/31343C';
-    // }
-
-    //
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'last_login_at' => 'datetime',
+    ];
 
     public function getAuthIdentifierName()
     {
@@ -71,8 +61,10 @@ class Admin extends Model implements Authenticatable
 
     public function getLogoAttribute($value)
     {
-        if (isset($value))
+        if (isset($value)) {
             return storage_public($value);
+        }
+
         return url('assets/img/unknown.svg');
     }
 }
