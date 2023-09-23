@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,26 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('{id}', [AdminController::class, 'show'])->name('show');
     });
 
+    // Roles
+    Route::prefix('roles')->name('roles.')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('create', [AdminController::class, 'create'])->name('create');
+        Route::post('store', [AdminController::class, 'store'])->name('store');
+        Route::get('{id}/edit', [AdminController::class, 'edit'])->name('edit');
+        Route::post('{id}/update', [AdminController::class, 'update'])->name('update');
+        Route::get('{id}', [AdminController::class, 'show'])->name('show');
+    });
+
+    // Permissions
+    Route::prefix('permissions')->name('permissions.')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('create', [AdminController::class, 'create'])->name('create');
+        Route::post('store', [AdminController::class, 'store'])->name('store');
+        Route::get('{id}/edit', [AdminController::class, 'edit'])->name('edit');
+        Route::post('{id}/update', [AdminController::class, 'update'])->name('update');
+        Route::get('{id}', [AdminController::class, 'show'])->name('show');
+    });
+
     // Users
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
@@ -31,6 +52,13 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('{id}/edit', [UserController::class, 'edit'])->name('edit');
         Route::post('{id}/update', [UserController::class, 'update'])->name('update');
         Route::get('{id}', [UserController::class, 'show'])->name('show');
+    });
+
+    // Notifications
+    Route::prefix('notifications')->name('notifications.')->group(function () {
+        Route::get('/', [NotificationController::class, 'index'])->name('index');
+        Route::get('create', [NotificationController::class, 'create'])->name('create');
+        Route::post('store', [NotificationController::class, 'store'])->name('store');
     });
 });
 
