@@ -23,7 +23,11 @@ class NotificationController extends Controller
      */
     public function create()
     {
-        return view('dashboard.notifications.create');
+        $data = [
+            'users' => User::all(),
+        ];
+
+        return view('dashboard.notifications.create', $data);
     }
 
     /**
@@ -31,10 +35,9 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-        // FCM Notification (Topic)
+        // TODO: FCM Notification (Topic)
 
-
-        return redirect('/admin/notifications')->with('success', 'Notification sent successfully');
+        return redirect('/admin/notifications/create')->with('success', 'Notification sent successfully');
     }
 
     /**

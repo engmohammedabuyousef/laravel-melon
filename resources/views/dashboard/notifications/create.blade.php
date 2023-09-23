@@ -1,5 +1,5 @@
 <x-default-layout>
-    <form action="{{ route('users.store') }}" method="POST">
+    <form action="{{ route('notifications.store') }}" method="POST">
         @csrf
 
         <div class="row">
@@ -29,64 +29,73 @@
 
         <br>
 
-        <div>
-            <label for="userType">Group User or Group:</label>
-            <br>
-            <select id="userType" name="userType">
-                <option value="">Select an option</option>
-                <option value="group">Group</option>
-                <option value="user">Specific User</option>
-            </select>
-        </div>
-
-        <div id="groupSelect" style="display: none;">
-            <label for="group">Select a Group:</label>
-            <select id="group" name="group">
-                <option value="group1">Group 1</option>
-                <option value="group2">Group 2</option>
-                <!-- Add more group options as needed -->
-            </select>
-        </div>
-
-        <div id="userSelect" style="display: none;">
-            <label for="user">Select a User:</label>
-            <select id="user" name="user">
-                <option value="user1">User 1</option>
-                <option value="user2">User 2</option>
-                <!-- Add more user options as needed -->
-            </select>
-        </div>
-
-
-        <script>
-            const userTypeSelect = document.getElementById("userType");
-            const groupSelect = document.getElementById("groupSelect");
-            const userSelect = document.getElementById("userSelect");
-
-            userTypeSelect.addEventListener("change", function() {
-                if (userTypeSelect.value === "group") {
-                    groupSelect.style.display = "block";
-                    userSelect.style.display = "none";
-                } else if (userTypeSelect.value === "user") {
-                    groupSelect.style.display = "none";
-                    userSelect.style.display = "block";
-                }
-            });
-        </script>
-
-        <div>
-            {{-- Group or Specific User --}}
-            {{-- select --}}
-        </div>
-
-        <div>
-            {{-- choose the user or choose the group  --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="type">Group or Specific User</label>
+                    <br>
+                    <select id="type" name="type" class="form-select form-select-solid form-select-sm"
+                        data-control="select2" data-hide-search="true">
+                        <option value="">Select an option</option>
+                        <option value="group">Group</option>
+                        <option value="user">Specific User</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <br>
 
+        <div id="groupSelect" style="display: none;">
+            <div class="form-group">
+                <label for="group">Choose a Group</label>
+                <select id="group" name="group" class="form-select form-select-solid form-select-sm"
+                    data-control="select2" data-hide-search="true">
+                    <option value="">Select a group</option>
+                    <option value="admins">Admins</option>
+                    <option value="users">Users</option>
+                    <option value="all">All</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="userSelect" style="display: none;">
+            <div class="form-group">
+                <label for="user">Choose a Specific User</label>
+                <select id="user" name="user" class="form-select form-select-solid form-select-sm"
+                    data-control="select2" data-hide-search="false">
+                    <option value="">Select a user</option>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#type').change(function() {
+                    var selectedType = $(this).val();
+                    if (selectedType === 'group') {
+                        $('#groupSelect').show();
+                        $('#userSelect').hide();
+                    } else if (selectedType === 'user') {
+                        $('#userSelect').show();
+                        $('#groupSelect').hide();
+                    } else {
+                        $('#groupSelect').hide();
+                        $('#userSelect').hide();
+                    }
+                });
+            });
+        </script>
+
+        <br>
+
         <button type="submit" class="btn btn-primary">
-            Add User
+            Send Notification
         </button>
     </form>
 
