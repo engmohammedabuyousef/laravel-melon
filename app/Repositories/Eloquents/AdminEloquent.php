@@ -23,9 +23,11 @@ class AdminEloquent
     public function store(array $data)
     {
         $admin = new Admin();
+
         $admin->email = $data['email'];
         $admin->name = $data['email'];
         $admin->password = $data['email'];
+
         $admin->save();
 
         return redirect('/admin/admins')->with('success', 'Admin created successfully');

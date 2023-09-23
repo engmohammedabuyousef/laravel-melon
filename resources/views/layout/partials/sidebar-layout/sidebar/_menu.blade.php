@@ -44,7 +44,7 @@
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
-                    <span class="menu-title">{{ __('Admins') }}</span>
+                    <span class="menu-title">{{ __('Admins and Roles') }}</span>
                     <span class="menu-arrow"></span>
                 </span>
                 <!--end:Menu link-->
@@ -76,23 +76,6 @@
                                 <span class="bullet bullet-dot"></span>
                             </span>
                             <span class="menu-title">{{ __('Roles') }}</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-                </div>
-                <!--end:Menu sub-->
-                <!--begin:Menu sub-->
-                <div class="menu-sub menu-sub-accordion">
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('permissions') ? 'active' : '' }}"
-                            href="{{ route('permissions.index') }}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">{{ __('Permissions') }}</span>
                         </a>
                         <!--end:Menu link-->
                     </div>

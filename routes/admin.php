@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\NotificationController;
+use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,12 +27,12 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // Roles
     Route::prefix('roles')->name('roles.')->group(function () {
-        Route::get('/', [AdminController::class, 'index'])->name('index');
-        Route::get('create', [AdminController::class, 'create'])->name('create');
-        Route::post('store', [AdminController::class, 'store'])->name('store');
-        Route::get('{id}/edit', [AdminController::class, 'edit'])->name('edit');
-        Route::post('{id}/update', [AdminController::class, 'update'])->name('update');
-        Route::get('{id}', [AdminController::class, 'show'])->name('show');
+        Route::get('/', [RoleController::class, 'index'])->name('index');
+        Route::get('create', [RoleController::class, 'create'])->name('create');
+        Route::post('store', [RoleController::class, 'store'])->name('store');
+        Route::get('{id}/edit', [RoleController::class, 'edit'])->name('edit');
+        Route::post('{id}/update', [RoleController::class, 'update'])->name('update');
+        Route::get('{id}', [RoleController::class, 'show'])->name('show');
     });
 
     // Permissions
