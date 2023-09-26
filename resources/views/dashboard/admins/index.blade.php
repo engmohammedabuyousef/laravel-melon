@@ -8,16 +8,17 @@
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar m-4">
                         <!--begin::Title-->
-                        <div class="m-4">
+                        <div class="m-4 d-flex justify-content-between align-items-center">
                             <h3>{{ $title }}</h3>
+                            <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                                <a href="/admin/admins/create" class="btn btn-primary">
+                                    {{ __('dashboard.add_admin') }}
+                                </a>
+                            </div>
                         </div>
                         <!--end::Title-->
                         <!--begin::Toolbar-->
-                        <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                            <a href="/admin/admins/create" class="btn btn-primary">
-                                {{ __('dashboard.add_admin') }}
-                            </a>
-                        </div>
+
                         <!--end::Toolbar-->
 
                         <!--begin::Modal-->
