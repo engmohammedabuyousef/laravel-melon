@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('fcm_notifications', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('auth_id')->nullable();
+            $table->unsignedBigInteger('receiver_id')->nullable();
             $table->string('auth_type');
-            $table->string('device_id')->nullable();
             $table->string('action')->nullable();
             $table->unsignedBigInteger('action_id')->nullable();
             $table->boolean('seen')->default(false);

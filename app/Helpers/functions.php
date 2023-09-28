@@ -142,7 +142,7 @@ function page_count($num_object, $page_size)
     return ceil($num_object / (doubleval($page_size)));
 }
 
-function max_pagination($record = 10.0)
+function max_pagination($record = 10)
 {
     return $record;
 }

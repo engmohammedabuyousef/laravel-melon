@@ -135,7 +135,7 @@ class NotificationSystemEloquent
         return $object;
     }
 
-    public function FCM_Topic($topicNames, $title, $body, $data, $deviceType)
+    public function FCMTopic($topicNames, $title, $body, $data, $deviceType)
     {
         if (count($topicNames) == 0) {
             return response_api(false, 422, null, []);
@@ -181,24 +181,22 @@ class NotificationSystemEloquent
 
     public function getActionTrans($action, $data, $local)
     {
-        return __(notification_trans() . '.' . $action, $data, $local);
+        return __('messages.notifications.' . $action, $data, $local);
     }
 
     public function getTitleTrans($action, $actionId, $local)
     {
-        return __(notification_action_trans() . '.' . $action, ['action_id' => '#' . $actionId], $local);
+        return __('messages.notifications.' . $action, ['action_id' => '#' . $actionId], $local);
     }
 
     function create(array $data)
     {
         $notification = new FcmNotification();
 
-        $notification->sender_id = $data['sender_id'];
         $notification->receiver_id = $data['receiver_id'];
         $notification->action = $data['action'];
         $notification->action_id = $data['action_id'];
         $notification->type = $data['type'];
-        $notification->title = isset($data['title']) ? $data['title'] : null;
 
         return $notification->save() ? $notification : null;
     }
