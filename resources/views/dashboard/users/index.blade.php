@@ -7,35 +7,27 @@
                 <div class="card card-custom">
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar m-4">
-                        <!--begin::Title-->
-                        <div class="m-4">
-                            <h3>{{ $title }}</h3>
-                        </div>
-                        <!--end::Title-->
                         <!--begin::Toolbar-->
-                        <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                            <a href="/admin/users/create" class="btn btn-primary">
-                                {{ __('dashboard.add_user') }}
-                            </a>
+                        <div class="m-4 d-flex justify-content-between align-items-center">
+                            <h3>{{ $title }}</h3>
+                            <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                                <a href="/admin/users/create" class="btn btn-primary">
+                                    {{ __('dashboard.add_user') }}
+                                </a>
+                            </div>
                         </div>
                         <!--end::Toolbar-->
-
-                        <!--begin::Modal-->
-                        {{-- <livewire:user.add-user-modal></livewire:user.add-user-modal> --}}
-                        <!--end::Modal-->
                     </div>
                     <!--end::Card toolbar-->
                     <div class="card-body">
                         <!--begin::Search Form-->
-
-                        <!--end::Search Form-->
+                        {{--  --}}
                         <!--end: Search Form-->
+
                         <!--begin: Datatable-->
                         <div class="portlet-body">
                             {{ $dataTable->table() }}
                         </div>
-
-
                         <!--end: Datatable-->
                     </div>
                 </div>

@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
         $user = new User();
         $user->name = 'First User';
         $user->username = 'first_user';
+        $user->bio = 'Outlines keep you honest. They stop you from indulging in poorly thought-out metaphors about driving and keep you focused on the overall structure of your post';
         $user->phone_number = '123456789';
         $user->email = 'test@test.com';
         $user->password = bcrypt('password');
