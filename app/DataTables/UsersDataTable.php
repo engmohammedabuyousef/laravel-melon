@@ -24,7 +24,7 @@ class UsersDataTable extends DataTable
                 return view('dashboard.users.info', compact('user'));
             })
             ->editColumn('last_login_at', function (User $user) {
-                return sprintf('<div class="badge badge-light fw-bold">%s</div>', $user->last_login_at ? $user->last_login_at->diffForHumans() : '-');
+                return sprintf('<div class="badge badge-light fw-bold">%s</div>', $user->last_login_at ? $user->last_login_at->diffForHumans() : 'Not logged in yet');
             })
             ->editColumn('created_at', function (User $user) {
                 return $user->created_at->format('d M Y, h:i a');

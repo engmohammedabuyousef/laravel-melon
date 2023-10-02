@@ -5,11 +5,19 @@ namespace App\Http\Controllers\Dashboard;
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\CreateUserRequest;
+use App\Http\Requests\Users\UpdateUserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Repositories\Eloquents\UserEloquent;
 
 class UserController extends Controller
 {
+    private $user;
+
+    public function __construct(UserEloquent $userEloquent)
+    {
+        $this->user = $userEloquent;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -35,16 +43,7 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->username = $request->email;
-        $user->phone_number = $request->phone_number;
-        $user->email = $request->email;
-        $user->password = bcrypt('password');
-        $user->last_login_at = now();
-        $user->save();
-
-        return redirect('/admin/users')->with('success', 'User created successfully');
+        return $this->user->store($request->all());
     }
 
     /**
@@ -60,24 +59,26 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = User::find($id);
+
         return view('dashboard.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        return $this->user->update($request->all(), $id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        return $this->user->delete($id);
     }
 }

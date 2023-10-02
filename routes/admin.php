@@ -52,6 +52,7 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('store', [UserController::class, 'store'])->name('store');
         Route::get('{id}/edit', [UserController::class, 'edit'])->name('edit');
         Route::post('{id}/update', [UserController::class, 'update'])->name('update');
+        Route::post('{id}/delete', [UserController::class, 'destroy'])->name('destroy');
         Route::get('{id}', [UserController::class, 'show'])->name('show');
     });
 

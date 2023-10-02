@@ -4,11 +4,12 @@ namespace App\Repositories\Eloquents;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Repositories\Classes\Uploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-class UserEloquent
+class UserEloquent extends Uploader
 {
     private $model, $fcmToken;
 
@@ -173,6 +174,71 @@ class UserEloquent
         return new $user;
     }
 
+    function store(array $data)
+    {
+        $user = new User();
+
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->username = generateUserNameUnique($data['name']);
+
+        $user->name = $data['name'];
+
+        if (isset($data['photo'])) {
+            $user->photo = $this->storeImage('users', 'photo');
+        }
+
+        if (isset($data['bio'])) {
+            $user->bio = $data['bio'];
+        }
+
+        if (isset($data['phone_number'])) {
+            $user->phone_number = $data['phone_number'];
+        }
+
+        if ($user->save()) {
+            return redirect('/admin/users')->with('success', 'User created successfully');
+        }
+    }
+
+    function update(array $data, $id)
+    {
+        $user = User::find($id);
+
+        if (!isset($user)) {
+            return response_api(false, 404);
+        }
+
+        $user->email = $data['email'];
+
+        if (isset($user->name)) {
+            $user->name = $data['name'];
+            $user->username = generateUserNameUnique($data['name']);
+        }
+
+        if (isset($user->password)) {
+            $user->password = bcrypt($data['password']);
+        }
+
+        if (isset($data['photo'])) {
+            $user->photo = $this->storeImage('users', 'photo');
+        }
+
+        if (isset($data['bio'])) {
+            $user->bio = $data['bio'];
+        }
+
+        if (isset($data['phone_number'])) {
+            $user->phone_number = $data['phone_number'];
+        }
+
+        if ($user->save()) {
+            return redirect('/admin/users')->with('success', 'User updated successfully');
+        }
+    }
+
+
+
     function editProfile(array $data)
     {
         // $message = __('app.updated');
@@ -215,6 +281,12 @@ class UserEloquent
         // return response_api(false, 422, null, empObj());
     }
 
+    function delete($id)
+    {
+        $user = $this->model->find($id);
+        return isset($user) && $user->delete();
+    }
+
     /*
     function refreshToken()
     {
@@ -248,11 +320,7 @@ class UserEloquent
         ];
     }
 
-    function delete($id)
-    {
-        $user = $this->model->find($id);
-        return isset($user) && $user->delete();
-    }
+
 
     function editProfile(array $data)
     {
@@ -471,27 +539,7 @@ class UserEloquent
             ->rawColumns(['is_active', 'photo', 'action', 'type'])->toJson();
     }
 
-    function store(array $data)
-    {
-        $user = new User();
 
-        if (isset($data['email']))
-            $user->email = $data['email'];
-        $user->password = bcrypt($data['password']);
-        $user->username = $data['username'];
-        $user->phone = $data['phone'];
-        $user->bio = $data['bio'];
-        $user->name = $data['name'];
-        $user->country_id = 1;
-
-        // TODO: profile-photo in add-user
-        // if (isset($data['photo']))
-        //     $user->photo = $this->storeImageCustom('users', 'photo');
-
-        if ($user->save()) {
-            return response_api(true, 200, __('app.user_created'), ['token' => empObj(), 'user' => new UserResource($user)]);
-        }
-    }
 
     function update(array $data, $id = null)
     {

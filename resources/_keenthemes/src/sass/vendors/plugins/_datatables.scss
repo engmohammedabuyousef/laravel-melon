@@ -25,12 +25,12 @@ div.dataTables_wrapper div.dataTables_filter {
 
 div.dataTables_wrapper div.dataTables_info {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     font-weight: $font-weight-semibold;
     color: var(--#{$prefix}gray-700);
     padding: $toolbar-spacing;
 
-    .select-info, 
+    .select-info,
     .select-item {
         margin-left: 0;
         font-size: 0.9rem;
@@ -38,12 +38,12 @@ div.dataTables_wrapper div.dataTables_info {
     }
 }
 
-div.dataTables_length + div.dataTables_info {
+div.dataTables_length+div.dataTables_info {
     margin-left: 1rem;
 }
 
 // Pagination
-div.dataTables_wrapper div.dataTables_paginate  {
+div.dataTables_wrapper div.dataTables_paginate {
     padding: $toolbar-spacing;
     margin-left: 0.5rem;
 
@@ -54,7 +54,9 @@ div.dataTables_wrapper div.dataTables_paginate  {
 
 // Head
 table.dataTable>thead>tr> {
-    td, th {
+
+    td,
+    th {
         &:not(.sorting_disabled) {
             padding-right: 0;
         }
@@ -62,8 +64,9 @@ table.dataTable>thead>tr> {
 }
 
 // Sorting
-table.dataTable > thead {
+table.dataTable>thead {
     .sorting {
+
         &:after,
         &:before {
             display: none !important;
@@ -73,7 +76,7 @@ table.dataTable > thead {
     .sorting_asc,
     .sorting_desc {
         vertical-align: middle;
-        
+
         &:before,
         &:after {
             position: relative !important;
@@ -95,12 +98,12 @@ table.dataTable > thead {
     }
 }
 
-table.dataTable > thead .sorting_asc:after {
+table.dataTable>thead .sorting_asc:after {
     opacity: 1;
     @include svg-bg-icon(arrow-top, var(--#{$prefix}text-muted));
 }
 
-table.dataTable > thead .sorting_desc:after {
+table.dataTable>thead .sorting_desc:after {
     opacity: 1;
     @include svg-bg-icon(arrow-bottom, var(--#{$prefix}text-muted));
 }
@@ -122,19 +125,31 @@ div.dataTables_wrapper {
         padding: 1rem 2rem !important;
         transform: translateX(-50%) translateY(-50%);
 
-        > div {
-            display: none;    
+        >div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        >div:last-child>div {
+            position: absolute;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: dimgrey;
+            animation-timing-function: cubic-bezier(0, 1, 1, 0);
         }
     }
 }
 
 // Responsive
-table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control, 
-table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control,
-table.dataTable.dtr-column.collapsed > tbody > tr > td.dtr-control, 
-table.dataTable.dtr-column.collapsed > tbody > tr > th.dtr-control {
-    $icon-size:  1.35rem;
-    
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control,
+table.dataTable.dtr-column.collapsed>tbody>tr>td.dtr-control,
+table.dataTable.dtr-column.collapsed>tbody>tr>th.dtr-control {
+    $icon-size: 1.35rem;
+
     &:before {
         top: 50%;
         left: 0;
@@ -155,11 +170,11 @@ table.dataTable.dtr-column.collapsed > tbody > tr > th.dtr-control {
 
         :root &,
         [data-bs-theme="light"] & {
-            @include svg-bg-icon(expand, $gray-600);  
+            @include svg-bg-icon(expand, $gray-600);
         }
 
         [data-bs-theme="dark"] & {
-            @include svg-bg-icon(expand, $gray-600-dark);  
+            @include svg-bg-icon(expand, $gray-600-dark);
         }
     }
 
@@ -171,29 +186,29 @@ table.dataTable.dtr-column.collapsed > tbody > tr > th.dtr-control {
     }
 }
 
-table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td.dtr-control:before, 
-table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th.dtr-control:before,
-table.dataTable.dtr-column.collapsed > tbody > tr.parent > td.dtr-control:before, 
-table.dataTable.dtr-column.collapsed > tbody > tr.parent > th.dtr-control:before {
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th.dtr-control:before,
+table.dataTable.dtr-column.collapsed>tbody>tr.parent>td.dtr-control:before,
+table.dataTable.dtr-column.collapsed>tbody>tr.parent>th.dtr-control:before {
     @include svg-bg-icon(collapse, $primary);
 }
 
-table.dataTable > tbody > tr.child span.dtr-title {
+table.dataTable>tbody>tr.child span.dtr-title {
     display: inline-block;
     min-width: 100px;
     font-weight: $font-weight-semibold;
 }
 
-table.dataTable > tbody > tr.child span.dtr-data {
+table.dataTable>tbody>tr.child span.dtr-data {
     font-weight: $font-weight-normal;
 }
 
 // Striped
-table.dataTable.table-striped > tbody > tr.odd > * {
+table.dataTable.table-striped>tbody>tr.odd>* {
     box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-striped-bg);
 }
 
-table.dataTable > tbody > tr.selected > * {
+table.dataTable>tbody>tr.selected>* {
     box-shadow: inset 0 0 0 9999px var(--#{$prefix}primary);
     color: var(--#{$prefix}primary-inverse);
 
@@ -221,10 +236,11 @@ div.dataTables_scrollBody {
     }
 }
 
-.dataTables_scroll > .dataTables_scrollBody > .table > thead {
+.dataTables_scroll>.dataTables_scrollBody>.table>thead {
     line-height: 0;
-    
+
     .sorting {
+
         &:after,
         &:before {
             display: none !important;
@@ -238,13 +254,13 @@ div.dtfc-left-top-blocker {
 }
 
 // Fixed column
-table.dataTable thead tr > .dtfc-fixed-left, 
-table.dataTable thead tr > .dtfc-fixed-right {
+table.dataTable thead tr>.dtfc-fixed-left,
+table.dataTable thead tr>.dtfc-fixed-right {
     background-color: var(--#{$prefix}body-bg);
 }
 
-table.dataTable tbody tr > .dtfc-fixed-left, 
-table.dataTable tbody tr > .dtfc-fixed-right {
+table.dataTable tbody tr>.dtfc-fixed-left,
+table.dataTable tbody tr>.dtfc-fixed-right {
     background-color: var(--#{$prefix}body-bg);
 }
 
@@ -255,7 +271,7 @@ table.dataTable tbody tr > .dtfc-fixed-right {
     .table {
         background-color: var(--#{$prefix}body-bg) !important;
     }
-    
+
     &,
     .table,
     .table th {
@@ -267,6 +283,6 @@ table.dataTable tbody tr > .dtfc-fixed-right {
 // Child details
 .dtr-details {
     li {
-        display: flex;    
-    }    
+        display: flex;
+    }
 }

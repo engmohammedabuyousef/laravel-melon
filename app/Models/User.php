@@ -20,4 +20,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'last_login_at' => 'datetime',
     ];
+
+    public function getPhotoAttribute($value)
+    {
+        if ($value) {
+            return storage_public($value);
+        }
+
+        return asset('assets/images/default_user.png');
+    }
 }

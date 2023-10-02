@@ -24,6 +24,16 @@ class Admin extends Model implements Authenticatable
         'last_login_at' => 'datetime',
     ];
 
+    public function getPhotoAttribute($value)
+    {
+        if ($value) {
+            return storage_public($value);
+        }
+
+        return asset('assets/images/default_admin.jfif');
+    }
+
+    // Authenticatable
     public function getAuthIdentifierName()
     {
         return 'id';
@@ -52,19 +62,5 @@ class Admin extends Model implements Authenticatable
     public function getRememberTokenName()
     {
         return 'remember_token';
-    }
-
-    public function scopeAdmin()
-    {
-        return $this->where('type', 'admin');
-    }
-
-    public function getLogoAttribute($value)
-    {
-        if (isset($value)) {
-            return storage_public($value);
-        }
-
-        return url('assets/img/unknown.svg');
     }
 }

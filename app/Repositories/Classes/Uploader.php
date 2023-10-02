@@ -2,10 +2,86 @@
 
 namespace App\Repositories\Classes;
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
+class Uploader
+{
+    public function storeImageFile($file)
+    {
+        $filePath = "upload";
+
+        return $this->storePublicImage($file, $filePath);
+    }
+
+    public function storePublicImage($file, $filePath)
+    {
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+
+        $image = Image::make($file->getRealpath())->orientate();
+
+        $path = public_path('storage/' . $filename);
+
+        $image->save($path);
+
+        return 'upload/' . $filename;
+    }
+
+    public function storeImage($folder, $fileName)
+    {
+        if (!request()->hasFile($fileName)) {
+            return null;
+        }
+
+        $file = request()->file($fileName);
+
+        return Storage::disk('public')->put($folder, $file);
+    }
+
+    public function removeImage($path)
+    {
+        if (file_exists($path)) {
+            unlink($path);
+        }
+    }
+
+    public function copyFolder($currentName, $newName)
+    {
+        $newFolder = storage_path('app/' . $newName);
+
+        if (!file_exists($newFolder)) {
+            File::copyDirectory(storage_path('app/' . $currentName), $newFolder);
+        }
+    }
+
+    public function uploadImage(array $request, $inputName, $folder)
+    {
+        if (!$request[$inputName]->isValid()) {
+            return null;
+        }
+
+        $temp = time() . rand(5, 50);
+        $ext = $request[$inputName]->getClientOriginalExtension();
+        $ext = strtolower($ext);
+        $newFileName = $temp . '.' . $ext;
+        $path = "assets/" . $folder;
+
+        if (!File::exists($path)) {
+            File::makeDirectory($path, 0777, true, true);
+        }
+
+        $upload = $request[$inputName]->move($path, $newFileName);
+
+        if (isset($upload)) {
+            return $newFileName;
+        }
+
+        return null;
+    }
+}
+
+/*
 class Uploader
 {
     public function storeImageFile($file)
@@ -97,7 +173,7 @@ class Uploader
         return Storage::disk('s3')->put($filePath, $file);
     }
 }
-
+*/
 /*
 <?php
 
