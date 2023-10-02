@@ -19,6 +19,7 @@ class UsersDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+
             ->rawColumns(['user', 'last_login_at'])
             ->editColumn('user', function (User $user) {
                 return view('dashboard.users.info', compact('user'));
