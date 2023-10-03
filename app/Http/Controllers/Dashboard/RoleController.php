@@ -34,11 +34,6 @@ class RoleController extends Controller
         return $this->role->store($request->all());
     }
 
-    public function show(Role $role)
-    {
-        return $this->role->show($role);
-    }
-
     public function edit($id)
     {
         $role = Role::find($id);
@@ -46,9 +41,9 @@ class RoleController extends Controller
         return $this->role->edit($role);
     }
 
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
-        return $this->role->update($request->all(), $role);
+        return $this->role->update($request->all(), $id);
     }
 
     public function destroy(Role $role)

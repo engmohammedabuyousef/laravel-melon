@@ -32,7 +32,6 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('store', [RoleController::class, 'store'])->name('store');
         Route::get('{id}/edit', [RoleController::class, 'edit'])->name('edit');
         Route::post('{id}/update', [RoleController::class, 'update'])->name('update');
-        Route::get('{id}', [RoleController::class, 'show'])->name('show');
     });
 
     // Permissions

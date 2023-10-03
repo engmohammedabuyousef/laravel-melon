@@ -62,7 +62,6 @@ class RolesDataTable extends DataTable
     {
         return [
             Column::make('name')->title('Name'),
-            Column::make('created_at')->title('Joined Date'),
             Column::computed('actions')
                 ->addClass('text-end')
                 ->exportable(false)
