@@ -33,6 +33,20 @@
 			"item": [
 				{
 					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"access_token\",jsonData.items.token.access_token);\r",
+									"pm.environment.set(\"refresh_token\",jsonData.items.token.refresh_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -56,7 +70,7 @@
 								},
 								{
 									"key": "email",
-									"value": "test@test.com",
+									"value": "example@example.com",
 									"type": "text"
 								},
 								{
@@ -71,12 +85,12 @@
 								},
 								{
 									"key": "name",
-									"value": "Test Abu Test",
+									"value": "Example Abu Example",
 									"type": "text"
 								},
 								{
 									"key": "phone_number",
-									"value": "+970123456789",
+									"value": "123123123",
 									"type": "text"
 								},
 								{
@@ -121,6 +135,20 @@
 				},
 				{
 					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"access_token\",jsonData.items.token.access_token);\r",
+									"pm.environment.set(\"refresh_token\",jsonData.items.token.refresh_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -213,6 +241,20 @@
 				},
 				{
 					"name": "Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"access_token\",jsonData.items.token.access_token);\r",
+									"pm.environment.set(\"refresh_token\",jsonData.items.token.refresh_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -263,18 +305,18 @@
 							"formdata": [
 								{
 									"key": "device_type",
-									"value": "ios",
+									"value": "android",
 									"description": "['android', 'ios']",
 									"type": "text"
 								},
 								{
 									"key": "device_id",
-									"value": "123456789",
+									"value": "9ce6b038b9313268",
 									"type": "text"
 								},
 								{
 									"key": "fcm_token",
-									"value": "84654653416546534165468",
+									"value": "d24LGYkgSPGTQKJL57UztD:APA91bHIL9rnlbkmQcrNohSTLwrAu3dkvZsS8bk2pko0hEYw5EpNolZrhwQZ8XRa-_iCOCy4JDYjj93CoDD_9jFy-BLQnBCQR9D7QrTtkUjQnSXmnCYLu3xxD2Fx0PBV6xkzh9gQ-QgU",
 									"type": "text"
 								}
 							]
@@ -374,11 +416,8 @@
 				},
 				{
 					"name": "Verify Phone Number",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "formdata",
@@ -490,6 +529,45 @@
 							],
 							"path": [
 								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Notifications List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "page_size",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "page_number",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/notifications",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notifications"
 							]
 						}
 					},
