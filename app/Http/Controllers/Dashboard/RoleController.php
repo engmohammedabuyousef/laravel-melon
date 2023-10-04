@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\DataTables\RolesDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admins\CreateAdminRequest;
+use App\Http\Requests\Roles\StoreRoleRequest;
 use App\Models\Admin;
 use App\Models\Role;
 use App\Repositories\Eloquents\RoleEloquent;
@@ -29,7 +30,7 @@ class RoleController extends Controller
         return $this->role->create();
     }
 
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
         return $this->role->store($request->all());
     }

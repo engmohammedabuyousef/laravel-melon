@@ -13,7 +13,4 @@ Route::get('en', function () {
     return back();
 })->name('en');
 
-Route::get('/', function () {
-    return 'Landing Page';
-    // test
-});
+Route::view('/', 'landing.index');

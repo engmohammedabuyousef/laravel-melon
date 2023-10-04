@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\API\FcmNotificationController;
 use App\Http\Controllers\API\GeneralController;
 use App\Http\Controllers\API\UserController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +24,8 @@ Route::group(['prefix' => 'v1'], function () {
     // Auth
     Route::post('register', [UserController::class, 'register']);
     Route::post('login', [UserController::class, 'login']);
-    Route::post('refresh-token', [UserController::class, '']);
-    Route::post('refresh-fcm-token', [UserController::class, '']);
+    Route::post('refresh-token', [UserController::class, 'refreshToken']);
+    Route::post('refresh-fcm-token', [FcmNotificationController::class, 'refreshFcmToken']);
     Route::post('forget-password', [UserController::class, '']);
     Route::post('deactivate-account', [UserController::class, '']);
     Route::post('delete-account', [UserController::class, '']);
@@ -34,5 +36,5 @@ Route::group(['prefix' => 'v1'], function () {
     Route::put('profile', [UserController::class, 'editProfile']);
 
     // Notifications
-    // Route::get('notifications', [::class, 'index']);
+    Route::post('notifications', [FcmNotificationController::class, 'index']);
 });

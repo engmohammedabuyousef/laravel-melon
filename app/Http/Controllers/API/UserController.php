@@ -9,35 +9,40 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    private $user;
+    private $model;
 
     public function __construct(UserEloquent $userEloquent)
     {
-        $this->user = $userEloquent;
+        $this->model = $userEloquent;
     }
 
     public function register(RegisterUserRequest $request)
     {
-        return $this->user->register($request->all());
+        return $this->model->register($request->all());
     }
 
     public function login(Request $request)
     {
-        return $this->user->login($request->all());
+        return $this->model->login($request->all());
+    }
+
+    public function refreshToken(Request $request)
+    {
+        return $this->model->refreshToken($request->all());
     }
 
     public function profile($id = null)
     {
-        return $this->user->getById($id);
+        return $this->model->getById($id);
     }
 
     public function editProfile(Request $request)
     {
-        return $this->user->editProfile($request->all());
+        return $this->model->editProfile($request->all());
     }
 
     public function logout(Request $request)
     {
-        return $this->user->logout($request->all());
+        return $this->model->logout($request->all());
     }
 }

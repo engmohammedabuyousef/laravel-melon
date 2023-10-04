@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquents;
 
 use App\Http\Resources\FcmNotificationResource;
 use App\Models\FcmNotification;
+use App\Models\FcmToken;
 use App\Models\User;
 
 class FcmNotificationEloquent
@@ -18,7 +19,7 @@ class FcmNotificationEloquent
         $this->fcmToken = $fcmToken;
     }
 
-    function getAll(array $data)
+    function index(array $data)
     {
         $page_size = isset($data['page_size']) ? $data['page_size'] : max_pagination();
         $page_number = isset($data['page_number']) ? $data['page_number'] : 1;
@@ -36,6 +37,35 @@ class FcmNotificationEloquent
         }
 
         return $object;
+    }
+
+    function refreshFcmToken(array $attributes)
+    {
+        if (authApiId() != null) {
+            $authId = authApiId();
+            $authType = 'user';
+        }
+
+        $device = $this->model->where('receiver_id', $authId)->where('auth_type', $authType)->first(); // TODO: review
+
+        if (!isset($device)) {
+            $device = new FcmToken();
+
+            $device->auth_id = $authId;
+
+            if (isset($attributes['device_id'])) {
+                $device->device_id = $attributes['device_id'];
+            }
+
+            $device->device_type = $attributes['device_type'];
+        }
+
+        $device->fcm_token = $attributes['fcm_token'];
+        $device->auth_type = $authType;
+
+        $device->save();
+
+        return response_api(true, 200, __('app.success'), []);
     }
 
     function getById($id)

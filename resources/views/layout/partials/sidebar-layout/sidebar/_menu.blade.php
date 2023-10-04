@@ -10,7 +10,7 @@
             data-kt-menu="true" data-kt-menu-expand="false">
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click"
-                class="menu-item menu-accordion {{ request()->routeIs('dashboard') ? 'here show' : '' }}">
+                class="menu-item menu-accordion {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['dashboard'])? 'here show': '' }}">
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
@@ -23,7 +23,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
+                        <a class="menu-link {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['dashboard'])? 'active': '' }}""
                             href="{{ route('dashboard') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
@@ -40,7 +40,7 @@
 
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click"
-                class="menu-item menu-accordion {{ request()->routeIs('admins') ? 'here show' : '' }}">
+                class="menu-item menu-accordion {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['admins', 'roles'])? 'here show': '' }}"
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
@@ -53,7 +53,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('admins') ? 'active' : '' }}"
+                        <a class="menu-link {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['admins'])? 'active': '' }}""
                             href="{{ route('admins.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
@@ -63,14 +63,10 @@
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
-                </div>
-                <!--end:Menu sub-->
-                <!--begin:Menu sub-->
-                <div class="menu-sub menu-sub-accordion">
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('roles') ? 'active' : '' }}"
+                        <a class="menu-link {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['roles'])? 'active': '' }}""
                             href="{{ route('roles.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
@@ -87,7 +83,7 @@
 
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click"
-                class="menu-item menu-accordion {{ request()->routeIs('users') ? 'here show' : '' }}">
+                class="menu-item menu-accordion {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['users'])? 'here show': '' }}">
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
@@ -100,7 +96,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('users') ? 'active' : '' }}"
+                        <a class="menu-link {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['users'])? 'active': '' }}""
                             href="{{ route('users.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
@@ -117,7 +113,7 @@
 
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click"
-                class="menu-item menu-accordion {{ request()->routeIs('notifications') ? 'here show' : '' }}">
+                class="menu-item menu-accordion {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['notifications'])? 'here show': '' }}">
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
@@ -130,7 +126,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('notifications') ? 'active' : '' }}"
+                        <a class="menu-link {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['notifications'])? 'active': '' }}""
                             href="{{ route('notifications.create') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>

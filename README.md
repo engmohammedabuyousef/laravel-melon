@@ -1,101 +1,114 @@
-<a href="https://github.com/engmohammedabuyousef/laravel-melon"> <h1 align="center">Melon</h1></a>
+<p align="center">
+  <a href="https://github.com/engmohammedabuyousef/laravel-melon">
+    <h1>Melon</h1>
+  </a>
+</p>
 
 ## About
 
-Melon project is a skeleton system with dashboard
+Melon is a customizable Laravel-based skeleton project with a dashboard.
 
+## Prerequisites
 
-## Pre Requirements
+Before you begin, ensure you have met the following requirements:
 
-- PHP 8
-- Composer
-- Laravel 9
-- Node.js 16.15.0+
-- Yarn 1.22+
-
+- **PHP 8**
+- **Composer**
+- **Laravel 9**
+- **Node.js 16.15.0+**
+- **Yarn 1.22+**
 
 ## Installation
 
-> **Warning** Make sure to follow the requirements first.
+**Warning**: Please make sure to meet the prerequisites listed above before proceeding with the installation.
 
-Here is how you can run the project locally:
+To run the project locally, follow these steps:
 
-1. Clone this repo
+1. Clone this repository:
 
-  ```sh
-  git clone https://github.com/engmohammedabuyousef/laravel-melon.git
-  ```
-
-2. Go into the project root directory
-
-  ```sh
-  cd laravel-melon
-  ```
-
-3. Copy .env.example file to .env file
-
-  ```sh
-  cp .env.example .env
-  ```
-
-4. Create database `reports` (you can change database name)
-
-5. Go to `.env` file
-
-  - set database credentials 
-
-    ```sh
-      DB_DATABASE=reports
-      DB_USERNAME=root
-      DB_PASSWORD=[YOUR PASSWORD]
+    ```bash
+    git clone https://github.com/engmohammedabuyousef/laravel-melon.git
     ```
 
-    > Make sure to follow your database username and password
+2. Navigate to the project's root directory:
 
-6. Install PHP dependencies
+    ```bash
+    cd laravel-melon
+    ```
 
-  ```sh
-  composer install
-  ```
+3. Copy the `.env.example` file to `.env`:
 
-7. Generate key
+    ```bash
+    cp .env.example .env
+    ```
 
-  ```sh
-  php artisan key:generate
-  ```
+4. Create a database named `melon` (you can change the database name).
 
-8. Run migrations & seeders
+5. Open the `.env` file and set the database credentials:
 
-  ```
-  php artisan migrate:fresh --seed
-  ```
+    ```env
+    DB_DATABASE=melon
+    DB_USERNAME=root
+    DB_PASSWORD=[YOUR PASSWORD]
+    ```
 
-9. Link the storage folder to public
+    Be sure to use your actual database username and password.
 
-  ```
-  php artisan storage:link
-  ```
+6. Install PHP dependencies:
 
-10. For Frontend
+    ```bash
+    composer install
+    ```
 
-  ```
-  npm install --global yarn
-  ```
+7. Generate an application key:
 
-  ```
-  yarn
-  ```
+    ```bash
+    php artisan key:generate
+    ```
 
-  ```
-  npm run dev
-  ```
+8. Run migrations and seeders:
 
-11. Run server
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
 
-  ```sh
-  php artisan serve
-  ```
+9. Create a symbolic link for the storage folder:
 
-12. Visit [localhost:8000](http://localhost:8000) in your favorite browser.
+    ```bash
+    php artisan storage:link
+    ```
 
-  > Make sure to follow your Laravel local Development Environment.
+10. Generate Passport keys:
+
+    ```bash
+    php artisan passport:keys
+    ```
+
+11. For the frontend, install Yarn globally if you haven't already:
+
+    ```bash
+    npm install --global yarn
+    ```
+
+    Then, install the frontend dependencies:
+
+    ```bash
+    yarn
+    ```
+
+    Finally, build the frontend assets:
+
+    ```bash
+    npm run dev
+    ```
+
+12. Start the development server:
+
+    ```bash
+    php artisan serve
+    ```
+
+13. Visit [localhost:8000](http://localhost:8000) in your favorite web browser.
+
+Make sure to configure your Laravel local development environment as needed.
+

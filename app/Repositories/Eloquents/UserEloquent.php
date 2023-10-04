@@ -237,7 +237,41 @@ class UserEloquent extends Uploader
         }
     }
 
+    function refreshToken()
+    {
+        $proxy = Request::create('oauth/token', 'POST');
 
+        $response = Route::dispatch($proxy);
+
+        $data = json_decode($response->getContent());
+
+        $statusCode = json_decode($response->getStatusCode());
+
+        if (isset($data->error)) {
+            return [
+                'status' => false,
+                'statusCode' => $statusCode,
+                'message' => $data->message,
+                'items' => [],
+            ];
+        }
+
+        $token =  [
+            'token_type' => $data->token_type,
+            'expires_in' => $data->expires_in,
+            'access_token' => $data->access_token,
+            'refresh_token' => $data->refresh_token,
+        ];
+
+        return [
+            'status' => true,
+            'statusCode' => 200,
+            'message' => __('app.success'),
+            'items' => [
+                'token' => $token,
+            ],
+        ];
+    }
 
     function editProfile(array $data)
     {
@@ -288,40 +322,6 @@ class UserEloquent extends Uploader
     }
 
     /*
-    function refreshToken()
-    {
-        $proxy = Request::create('oauth/token', 'POST');
-
-        $response = Route::dispatch($proxy);
-
-        $data = json_decode($response->getContent());
-
-        $statusCode = json_decode($response->getStatusCode());
-
-        if (isset($data->error)) {
-            return [
-                'status' => false,
-                'statusCode' => $statusCode,
-                'message' => $data->message,
-                'items' => []
-            ];
-        }
-
-        return [
-            'status' => true,
-            'statusCode' => 200,
-            'message' => __('app.success'),
-            'items' => [
-                'token_type' => $data->token_type,
-                'expires_in' => $data->expires_in,
-                'access_token' => $data->access_token,
-                'refresh_token' => $data->refresh_token,
-            ]
-        ];
-    }
-
-
-
     function editProfile(array $data)
     {
         $message = __('app.updated');
