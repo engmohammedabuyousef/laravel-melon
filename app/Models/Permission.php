@@ -17,4 +17,25 @@ class Permission extends PermissionSpatie
     {
         return $this->hasMany(Permission::class, 'parent_id', 'id');
     }
+
+    public function allChildren()
+    {
+        return Permission::whereIn('id', $this->nestedChildren())->get();
+    }
+
+    public function nestedChildren($childrenIds = [])
+    {
+        if ($childrenIds == []) {
+            $childrenIds = array_merge($childrenIds, [$this->id]);
+        }
+
+        $childrens = $this->hasMany(Permission::class, 'parent_id');
+        $childrenIds = array_merge($childrenIds, $childrens->pluck('id')->toArray());
+
+        foreach ($childrens->get() as $child) {
+            $childrenIds = $child->nestedChildren($childrenIds);
+        }
+
+        return $childrenIds;
+    }
 }

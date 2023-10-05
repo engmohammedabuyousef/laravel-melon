@@ -151,3 +151,16 @@ function storage_public($path)
 {
     return (isset($path)) ? url('/storage/' . $path) : null;
 }
+
+function deleteAllBetween($beginning, $end, $string)
+{
+    $beginningPos = strpos($string, $beginning);
+    $endPos = strpos($string, $end);
+    if ($beginningPos === false || $endPos === false) {
+        return $string;
+    }
+
+    $textToDelete = substr($string, $beginningPos, ($endPos + strlen($end)) - $beginningPos);
+
+    return deleteAllBetween($beginning, $end, str_replace($textToDelete, '', $string)); // recursion to ensure all occurrences are replaced
+}

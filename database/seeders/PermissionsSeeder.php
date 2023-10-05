@@ -55,15 +55,22 @@ class PermissionsSeeder extends Seeder
 
             /* Users Management */
             // 13
-            ['name' => 'customers', 'category' => 'Customers Management', 'parent_id' => 0, 'link' => 'customers.index', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'customer'],
+            ['name' => 'users', 'category' => 'Users Management', 'parent_id' => 0, 'link' => 'users.index', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'customer'],
             // 14
-            ['name' => 'change customer activation', 'category' => 'Customers Management', 'parent_id' => 13, 'link' => 'customers.change-status', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'customer'],
+            ['name' => 'change user activation', 'category' => 'Users Management', 'parent_id' => 13, 'link' => 'users.change-status', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
             // 15
-            ['name' => 'create customer', 'category' => 'Customers Management', 'parent_id' => 13, 'link' => 'customers.create', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'customer'],
+            ['name' => 'create user', 'category' => 'Users Management', 'parent_id' => 13, 'link' => 'users.create', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
             // 16
-            ['name' => 'edit customer', 'category' => 'Customers Management', 'parent_id' => 13, 'link' => 'customers.edit', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'customer'],
+            ['name' => 'edit user', 'category' => 'Users Management', 'parent_id' => 13, 'link' => 'users.edit', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
             // 17
-            ['name' => 'delete customer', 'category' => 'Customers Management', 'parent_id' => 13, 'link' => 'customers.delete', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'customer'],
+            ['name' => 'delete user', 'category' => 'Users Management', 'parent_id' => 13, 'link' => 'users.delete', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
+
+
+            /* Notifications Management */
+            // 18
+            ['name' => 'notifications', 'category' => 'Notifications Management', 'parent_id' => 0, 'link' => '#', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
+            // 19
+            ['name' => 'notifications list', 'category' => 'Notifications Management', 'parent_id' => 18, 'link' => 'notifications.create', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
         ]);
 
         $admin = Admin::first();
