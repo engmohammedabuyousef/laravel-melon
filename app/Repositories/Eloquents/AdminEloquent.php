@@ -50,14 +50,17 @@ class AdminEloquent
         return view('dashboard.admins.show', compact('admin'));
     }
 
-    public function edit($admin)
+    public function edit($id)
     {
-        return 'edit';
+        $admin = Admin::find($id);
+
+        return view('dashboard.admins.edit', compact('admin'));
     }
 
     public function update(array $data, $admin)
     {
-        //
+        dd($admin);
+//        $admin->syncRoles(['writer', 'admin']);
     }
 
     public function destroy($admin)

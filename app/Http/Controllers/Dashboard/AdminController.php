@@ -38,14 +38,14 @@ class AdminController extends Controller
         return $this->admin->show($admin);
     }
 
-    public function edit(Admin $admin)
+    public function edit($id)
     {
-        return $this->admin->edit($admin);
+        return $this->admin->edit($id);
     }
 
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, $id)
     {
-        return $this->admin->update($request->all(), $admin);
+        return $this->admin->update($request->all(), $id);
     }
 
     public function destroy(Admin $admin)

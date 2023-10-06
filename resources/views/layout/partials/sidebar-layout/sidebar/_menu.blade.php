@@ -11,6 +11,7 @@
             {{-- start:loop--}}
             <?php
             $menus = \App\Http\Resources\PermissionResource::collection(authAdmin()->getAllPermissions()->where('parent_id', 0)->where('in_menu', 1))->resolve();
+//            dd($menus);
             ?>
             @include('partials._sections', ['menus' => $menus])
             {{-- end:loop--}}

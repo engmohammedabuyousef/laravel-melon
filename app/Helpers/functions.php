@@ -164,3 +164,13 @@ function deleteAllBetween($beginning, $end, $string)
 
     return deleteAllBetween($beginning, $end, str_replace($textToDelete, '', $string)); // recursion to ensure all occurrences are replaced
 }
+
+function defaultAdminImage()
+{
+    return asset('assets/images/default_admin.jfif');
+}
+
+function defaultUserImage()
+{
+    return asset('assets/images/default_user.png');
+}
