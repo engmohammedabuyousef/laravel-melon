@@ -9,13 +9,13 @@
             $permisson = \App\Models\Permission::where('id', $menu['id'])->first();
         }
 
-        $is_true = 0;
+        $isTrue = 0;
 
         if (isset($currentPermission) && isset($permisson_list) && $currentPermission->id == $permisson->id || in_array(
                 $currentPermission->id,
                 $permisson->allChildren()->pluck('id')->toArray()
             )) {
-            $is_true = 1;
+            $isTrue = 1;
         }
         ?>
 
