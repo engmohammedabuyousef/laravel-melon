@@ -66,7 +66,7 @@ class PermissionsSeeder extends Seeder
 
             /* Notifications Management */
             // 16
-            ['name' => 'notifications', 'category' => 'Notifications Management', 'parent_id' => 0, 'link' => '#', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
+            ['name' => 'notifications', 'category' => 'Notifications Management', 'parent_id' => 0, 'link' => 'notifications.create', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
         ]);
 
         $role = Role::first();
