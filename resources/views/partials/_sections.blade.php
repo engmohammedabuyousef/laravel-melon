@@ -38,9 +38,9 @@
         </li>
     --}}
 
-{{--    {{$menu['permission']}}--}}
-        {{$page}}
-{{--    {{$menu['link']}}--}}
+    {{--    {{$menu['permission']}}--}}
+{{--    {{$page}}--}}
+    {{--    {{$menu['link']}}--}}
     <div data-kt-menu-trigger="click"
          class="menu-item menu-accordion
 {{--         {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),['notifications'])? 'here show': '' }}--}}
@@ -63,25 +63,25 @@
 
         @if (isset($menu['submenu']) && count($menu['submenu']) > 0)
 
-        <!--begin:Menu sub-->
-        <div class="menu-sub menu-sub-accordion">
-            <!--begin:Menu item-->
-            <div class="menu-item">
-                <!--begin:Menu link-->
-                @include('partials._sections', ['menus' => $menu['submenu'], 'isSub' => true])
+            <!--begin:Menu sub-->
+            <div class="menu-sub menu-sub-accordion">
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    @include('partials._sections', ['menus' => $menu['submenu'], 'isSub' => true])
 
-                {{--                <a class="menu-link {{ Illuminate\Support\Str::startsWith(request()->route()->getName(), ['notifications']) ? 'active': '' }}"--}}
-{{--                   href="{{ route('notifications.create') }}">--}}
-{{--                        <span class="menu-bullet">--}}
-{{--                                <span class="bullet bullet-dot"></span>--}}
-{{--                            </span>--}}
-{{--                    <span class="menu-title">{{ $menu['permission'] }}</span>--}}
-{{--                </a>--}}
-                <!--end:Menu link-->
+                    {{--                <a class="menu-link {{ Illuminate\Support\Str::startsWith(request()->route()->getName(), ['notifications']) ? 'active': '' }}"--}}
+                    {{--                   href="{{ route('notifications.create') }}">--}}
+                    {{--                        <span class="menu-bullet">--}}
+                    {{--                                <span class="bullet bullet-dot"></span>--}}
+                    {{--                            </span>--}}
+                    {{--                    <span class="menu-title">{{ $menu['permission'] }}</span>--}}
+                    {{--                </a>--}}
+                    <!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
             </div>
-            <!--end:Menu item-->
-        </div>
-        <!--end:Menu sub-->
+            <!--end:Menu sub-->
         @endif
 
 
