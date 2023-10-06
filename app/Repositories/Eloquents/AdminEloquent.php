@@ -3,6 +3,8 @@
 namespace App\Repositories\Eloquents;
 
 use App\Models\Admin;
+use App\Models\Role;
+use App\Models\User;
 
 class AdminEloquent
 {
@@ -17,7 +19,11 @@ class AdminEloquent
 
     public function create()
     {
-        return view('dashboard.admins.create');
+        $data = [
+            'roles' => Role::all(),
+        ];
+
+        return view('dashboard.admins.create', $data);
     }
 
     public function store(array $data)
@@ -25,12 +31,18 @@ class AdminEloquent
         $admin = new Admin();
 
         $admin->email = $data['email'];
-        $admin->name = $data['email'];
-        $admin->password = $data['email'];
+        $admin->password = bcrypt($data['password']);
+        $admin->name = $data['name'];
 
-        $admin->save();
+        if (isset($data['photo'])) {
+            $admin->photo = $this->storeImage('users', 'photo');
+        }
 
-        return redirect('/admin/admins')->with('success', 'Admin created successfully');
+        $admin->syncRoles($data['role']);
+
+        if ($admin->save()) {
+            return redirect('/admin/admins')->with('success', 'Admin created successfully');
+        }
     }
 
     public function show($admin)

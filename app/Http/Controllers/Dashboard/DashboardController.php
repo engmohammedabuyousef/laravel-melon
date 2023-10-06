@@ -10,10 +10,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-//        $menus = \App\Http\Resources\PermissionResource::collection(authAdmin()->getAllPermissions()->where('parent_id', 0)->where('in_menu', 1))->resolve();
-//
-//        return $menus;
-
         addVendors(['amcharts', 'amcharts-maps', 'amcharts-stock']);
 
         $data = [

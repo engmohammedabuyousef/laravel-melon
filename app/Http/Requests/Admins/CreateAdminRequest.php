@@ -22,7 +22,11 @@ class CreateAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email'],
+            'photo' => ['nullable', 'image', 'mimes:png,jpg,jpeg,jfif', 'max:2048'],  // size:1024 => 1 MB
+            'email' => ['required', 'email', 'unique:admins'],
+            'name' => ['required', 'string'],
+            'password' => ['required', 'string', 'confirmed'],
+            'role' => ['required'],
         ];
     }
 }

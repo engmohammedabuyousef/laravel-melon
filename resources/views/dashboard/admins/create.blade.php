@@ -17,16 +17,16 @@
             <div class="card-body text-center pt-0">
                 <!--begin::Image input-->
                 <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3"
-                    style="background-image: url('{{ asset('assets/images/default_admin.jfif') }}');"
-                    data-kt-image-input="true">
+                     style="background-image: url('{{ asset('assets/images/default_admin.jfif') }}');"
+                     data-kt-image-input="true">
                     <!--begin::Preview existing avatar-->
                     <div class="image-input-wrapper w-150px h-150px"></div>
                     <!--end::Preview existing avatar-->
 
                     <!--begin::Label-->
                     <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                        data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change avatar"
-                        data-bs-original-title="Change avatar" data-kt-initialized="1">
+                           data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change avatar"
+                           data-bs-original-title="Change avatar" data-kt-initialized="1">
                         <i class="ki-duotone ki-pencil fs-7"><span class="path1"></span><span
                                 class="path2"></span></i>
                         <!--begin::Inputs-->
@@ -38,16 +38,16 @@
 
                     <!--begin::Cancel-->
                     <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel avatar"
-                        data-bs-original-title="Cancel avatar" data-kt-initialized="1">
+                          data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel avatar"
+                          data-bs-original-title="Cancel avatar" data-kt-initialized="1">
                         <i class="ki-duotone ki-cross fs-2"><span class="path1"></span><span class="path2"></span></i>
                     </span>
                     <!--end::Cancel-->
 
                     <!--begin::Remove-->
                     <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                        data-kt-image-input-action="remove" data-bs-toggle="tooltip" aria-label="Remove avatar"
-                        data-bs-original-title="Remove avatar" data-kt-initialized="1">
+                          data-kt-image-input-action="remove" data-bs-toggle="tooltip" aria-label="Remove avatar"
+                          data-bs-original-title="Remove avatar" data-kt-initialized="1">
                         <i class="ki-duotone ki-cross fs-2"><span class="path1"></span><span class="path2"></span></i>
                     </span>
                     <!--end::Remove-->
@@ -71,7 +71,7 @@
                     <label>Name</label>
                     <div class="input-group">
                         <input type="text" class="form-control title" placeholder="Name" name="name"
-                            value="{{ old('name') }}">
+                               value="{{ old('name') }}">
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                     <label>Email</label>
                     <div class="input-group">
                         <input type="text" class="form-control title" placeholder="Email" name="email"
-                            value="{{ old('email') }}">
+                               value="{{ old('email') }}">
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <label>Phone Number</label>
                     <div class="input-group">
                         <input type="text" class="form-control title" placeholder="Phone Number" name="phone_number"
-                            value="{{ old('phone_number') }}">
+                               value="{{ old('phone_number') }}">
                     </div>
                 </div>
             </div>
@@ -126,9 +126,24 @@
                     <label>Password Confirmation</label>
                     <div class="input-group">
                         <input type="password" class="form-control title" placeholder="Password Confirmation"
-                            name="password_confirmation">
+                               name="password_confirmation">
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div id="groupSelect">
+            <div class="form-group">
+                <label for="group">Role</label>
+                <select id="role" name="role" class="form-select form-select-solid form-select-sm"
+                        data-control="select2" data-hide-search="true">
+                    <option value="">Select a role</option>
+                    @foreach($roles as $role)
+                        <option value="{{$role->id}}">{{$role->name}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
 
