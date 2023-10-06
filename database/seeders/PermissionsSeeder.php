@@ -33,7 +33,7 @@ class PermissionsSeeder extends Seeder
             ['name' => 'admins and roles', 'category' => 'Administration Management', 'parent_id' => 0, 'link' => '#', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'admin'],
             /* Admins Management */
             // 3
-            ['name' => 'admins', 'category' => 'Administration Management', 'parent_id' => 2, 'link' => '#', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
+            ['name' => 'admins', 'category' => 'Administration Management', 'parent_id' => 2, 'link' => 'admins.index', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
             // 4
             ['name' => 'create admin', 'category' => 'Administration Management', 'parent_id' => 3, 'link' => 'admins.create', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'admin'],
             // 5
