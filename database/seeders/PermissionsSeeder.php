@@ -47,7 +47,7 @@ class PermissionsSeeder extends Seeder
             // 9
             ['name' => 'roles list', 'category' => 'Administration Management', 'parent_id' => 8, 'link' => 'roles.index', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
             // 10
-            ['name' => 'create role', 'category' => 'Administration Management', 'parent_id' => 8, 'link' => 'roles.create', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
+            ['name' => 'create role', 'category' => 'Administration Management', 'parent_id' => 8, 'link' => 'roles.create', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'menu-bullet menu-bullet-line'],
             // 11
             ['name' => 'edit role', 'category' => 'Administration Management', 'parent_id' => 8, 'link' => 'roles.edit', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'admin'],
             // 12

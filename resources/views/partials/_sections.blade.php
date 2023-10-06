@@ -23,19 +23,18 @@
          {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),[ $menu['permission'] ])? 'here show': '' }}">
         <!--begin:Menu link-->
         @if($menu['link'] != '#')
-        <a href="{{route($menu['link'])}}">
-        @endif
-            <span class="menu-link">
+            <a href="{{route($menu['link'])}}">
+                @endif
+                <span class="menu-link">
                 <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
                 <span class="menu-title">{{ $menu['permission'] }}</span>
                 @if (isset($menu['submenu']) && count($menu['submenu']) > 0)
-                    <span class="menu-arrow"></span>
-                @endif
-            </span>
-
-            @if($menu['link'] != '#')
-        </a>
+                        <span class="menu-arrow"></span>
                     @endif
+            </span>
+                @if($menu['link'] != '#')
+            </a>
+        @endif
         <!--end:Menu link-->
 
         @if (isset($menu['submenu']) && count($menu['submenu']) > 0)
