@@ -3,10 +3,11 @@
         $menu['name'] = $menu['permission'];
         $menu['permission'] = ucwords($menu['permission']);
         $page = deleteAllBetween('/{', '}', Route::getFacadeRoot()->current()->uri());
-        $currentPermission = \App\Models\Permission::where('link', request()->route()->getName())->first();
+        $currentPermission = App\Models\Permission::where('link', request()->route()->getName())->first();
 
         if (isset($menu['id'])) {
-            $permisson = \App\Models\Permission::where('id', $menu['id'])->first();
+            $permisson = App\Models\Permission::where('id', $menu['id'])->first();
+            $parentId = App\Models\Permission::where('link', request()->route()->getName())->first()->parent_id;
         }
 
         $isTrue = 0;
@@ -17,14 +18,15 @@
             )) {
             $isTrue = 1;
         }
+
+        $childrenIds = $permisson->allChildren()->pluck('id')->toArray();
         ?>
 
     @if($menu['link'] != '#')
         <a href="{{route($menu['link'])}}">
             @endif
             <div data-kt-menu-trigger="click"
-                 class="menu-item menu-accordion
-         {{ $permisson['parent_id'] == $menu['parent_id'] ? 'here show': '' }}">
+                 class="menu-item menu-accordion {{ in_array($parentId ,$childrenIds) ? 'here show': '' }}">
                 <!--begin:Menu link-->
                 @if($menu['link'] != '#')
                     <a href="{{route($menu['link'])}}">
