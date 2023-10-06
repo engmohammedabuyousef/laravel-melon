@@ -21,12 +21,13 @@ class PermissionResource extends JsonResource
             'id' => $this->id,
             'title' => $this->name,
             'root' => $children->first() ? true : false,
-            'icon' => $this->icon, // iconSVG($this->icon)
+            'icon' => $this->icon,
             'page' => $this->link != '#' ? route($this->link) : '#',
             'bullet' => 'line',
             'permission' => $this->name,
             'link' => $this->link,
             'parent_id' => $this->parent_id,
+            'is_menu' => $this->is_menu,
         ];
 
         if ($children->first()) {

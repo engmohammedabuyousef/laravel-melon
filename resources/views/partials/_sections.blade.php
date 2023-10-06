@@ -31,7 +31,11 @@
                         @endif
                         <span
                             class="menu-link {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),[ $menu['name'] ])? 'active': '' }}">
-                    <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
+                    @if($permisson['parent_id'] == 0 )
+                                <span class="menu-icon">{!! getIcon($permisson['icon'], 'fs-2') !!}</span>
+                            @else
+                                <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                            @endif
                     <span class="menu-title">{{ $menu['permission'] }}</span>
                     @if (isset($menu['submenu']) && count($menu['submenu']) > 0)
                                 <span class="menu-arrow"></span>
