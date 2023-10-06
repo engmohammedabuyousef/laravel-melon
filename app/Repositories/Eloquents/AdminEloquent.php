@@ -57,10 +57,12 @@ class AdminEloquent
         return view('dashboard.admins.edit', compact('admin'));
     }
 
-    public function update(array $data, $admin)
+    public function update(array $data, $id)
     {
-        dd($admin);
-//        $admin->syncRoles(['writer', 'admin']);
+        $admin = Admin::find($id);
+
+        dd($data, $admin);
+        // $admin->syncRoles(['writer', 'admin']);
     }
 
     public function destroy($admin)
