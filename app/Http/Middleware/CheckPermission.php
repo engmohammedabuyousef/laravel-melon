@@ -38,7 +38,7 @@ class CheckPermission
                             return redirect()->route($firstPermission->link);
                         }
 
-                        return redirect(admin_url('no-access'))->withErrors(['error' => 'you don\'t have permission to do that']);
+                        return redirect(route('no-access'));
                     }
                 } else {
                     session()->flash('permission_id', $link->id);

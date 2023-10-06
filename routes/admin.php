@@ -67,4 +67,8 @@ Route::get('/error', function () {
     abort(500);
 });
 
+Route::get('/no-access', function () {
+    return view('errors.403');
+})->name('no-access');
+
 require __DIR__ . '/admin-auth.php';
