@@ -26,6 +26,7 @@ class PermissionResource extends JsonResource
             'bullet' => 'line',
             'permission' => $this->name,
             'link' => $this->link,
+            'parent_id' => $this->parent_id,
         ];
 
         if ($children->first()) {

@@ -1,5 +1,6 @@
 @foreach ($menus as $menu)
         <?php
+        $menu['name'] = $menu['permission'];
         $menu['permission'] = ucwords($menu['permission']);
         $page = deleteAllBetween('/{', '}', Route::getFacadeRoot()->current()->uri());
         $currentPermission = \App\Models\Permission::where('link', request()->route()->getName())->first();
@@ -21,15 +22,15 @@
     @if($menu['link'] != '#')
         <a href="{{route($menu['link'])}}">
             @endif
-
             <div data-kt-menu-trigger="click"
                  class="menu-item menu-accordion
-         {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),[ $menu['permission'] ])? 'here show': '' }}">
+         {{ $permisson['parent_id'] == $menu['parent_id'] ? 'here show': '' }}">
                 <!--begin:Menu link-->
                 @if($menu['link'] != '#')
                     <a href="{{route($menu['link'])}}">
                         @endif
-                        <span class="menu-link">
+                        <span
+                            class="menu-link {{ Illuminate\Support\Str::startsWith(request()->route()->getName(),[ $menu['name'] ])? 'active': '' }}">
                     <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
                     <span class="menu-title">{{ $menu['permission'] }}</span>
                     @if (isset($menu['submenu']) && count($menu['submenu']) > 0)
