@@ -16,11 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            PermissionsSeeder::class,
-            RolesSeeder::class,
-        ]);
-
         $admin = new Admin();
         $admin->name = 'Admin';
         $admin->email = 'admin@admin.com';
@@ -48,5 +43,10 @@ class DatabaseSeeder extends Seeder
         $client->password_client = true;
         $client->revoked = false;
         $client->save();
+
+        $this->call([
+            RolesSeeder::class,
+            PermissionsSeeder::class,
+        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -27,57 +28,58 @@ class PermissionsSeeder extends Seeder
             // 1
             ['name' => 'dashboard', 'category' => 'Dashboard', 'parent_id' => 0, 'link' => 'dashboard', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'dashboard'],
 
-            /* Admins Management */
+            /* Admins & Roles Management */
             // 2
             ['name' => 'admins and roles', 'category' => 'Administration Management', 'parent_id' => 0, 'link' => '#', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'admin'],
+            /* Admins Management */
             // 3
             ['name' => 'admins', 'category' => 'Administration Management', 'parent_id' => 2, 'link' => '#', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
             // 4
-            ['name' => 'admins list', 'category' => 'Administration Management', 'parent_id' => 3, 'link' => 'admins.index', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
-            // 5
             ['name' => 'create admin', 'category' => 'Administration Management', 'parent_id' => 3, 'link' => 'admins.create', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'admin'],
-            // 6
+            // 5
             ['name' => 'edit admin', 'category' => 'Administration Management', 'parent_id' => 3, 'link' => 'admin.edit', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'admin'],
-            // 7
+            // 6
             ['name' => 'delete admin', 'category' => 'Administration Management', 'parent_id' => 3, 'link' => 'admins.delete', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'admin'],
 
             /* Roles Management */
-            // 8
+            // 7
             ['name' => 'roles', 'category' => 'Administration Management', 'parent_id' => 2, 'link' => '#', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
+            // 8
+            ['name' => 'create role', 'category' => 'Administration Management', 'parent_id' => 7, 'link' => 'roles.create', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'menu-bullet menu-bullet-line'],
             // 9
-            ['name' => 'roles list', 'category' => 'Administration Management', 'parent_id' => 8, 'link' => 'roles.index', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
+            ['name' => 'edit role', 'category' => 'Administration Management', 'parent_id' => 7, 'link' => 'roles.edit', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'admin'],
             // 10
-            ['name' => 'create role', 'category' => 'Administration Management', 'parent_id' => 8, 'link' => 'roles.create', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'menu-bullet menu-bullet-line'],
-            // 11
-            ['name' => 'edit role', 'category' => 'Administration Management', 'parent_id' => 8, 'link' => 'roles.edit', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'admin'],
-            // 12
-            ['name' => 'delete role', 'category' => 'Administration Management', 'parent_id' => 8, 'link' => 'roles.delete', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'admin'],
+            ['name' => 'delete role', 'category' => 'Administration Management', 'parent_id' => 7, 'link' => 'roles.delete', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'admin'],
 
             /* Users Management */
-            // 13
+            // 11
             ['name' => 'users', 'category' => 'Users Management', 'parent_id' => 0, 'link' => 'users.index', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'customer'],
+            // 12
+            ['name' => 'change user activation', 'category' => 'Users Management', 'parent_id' => 11, 'link' => 'users.change-status', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
+            // 13
+            ['name' => 'create user', 'category' => 'Users Management', 'parent_id' => 11, 'link' => 'users.create', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
             // 14
-            ['name' => 'change user activation', 'category' => 'Users Management', 'parent_id' => 13, 'link' => 'users.change-status', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
+            ['name' => 'edit user', 'category' => 'Users Management', 'parent_id' => 11, 'link' => 'users.edit', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
             // 15
-            ['name' => 'create user', 'category' => 'Users Management', 'parent_id' => 13, 'link' => 'users.create', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
-            // 16
-            ['name' => 'edit user', 'category' => 'Users Management', 'parent_id' => 13, 'link' => 'users.edit', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
-            // 17
-            ['name' => 'delete user', 'category' => 'Users Management', 'parent_id' => 13, 'link' => 'users.delete', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
+            ['name' => 'delete user', 'category' => 'Users Management', 'parent_id' => 11, 'link' => 'users.delete', 'guard_name' => 'admin', 'in_menu' => 0, 'icon' => 'user'],
 
 
             /* Notifications Management */
-            // 18
+            // 16
             ['name' => 'notifications', 'category' => 'Notifications Management', 'parent_id' => 0, 'link' => '#', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
-            // 19
-            ['name' => 'notifications list', 'category' => 'Notifications Management', 'parent_id' => 18, 'link' => 'notifications.create', 'guard_name' => 'admin', 'in_menu' => 1, 'icon' => 'menu-bullet menu-bullet-line'],
         ]);
 
-        $admin = Admin::first();
+        $role = Role::first();
 
-        if ($admin) {
-            $permissions = Permission::pluck('id')->toArray();
-            $admin->syncPermissions($permissions);
+        if ($role) {
+            $permissions = Permission::all();
+            $role->syncPermissions($permissions);
+
+            $admin = Admin::first();
+
+            if ($admin) {
+                $admin->assignRole($role);
+            }
         }
     }
 }
