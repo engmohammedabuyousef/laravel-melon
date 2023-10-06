@@ -1,7 +1,6 @@
 @foreach ($menus as $menu)
         <?php
-        $menu['permission'] = str_replace(' ', '', str_replace('and', '|', $menu['permission']));
-        $menu['link'] = str_replace(' ', '', str_replace('and', '|', $menu['link']));
+        $menu['permission'] = ucwords($menu['permission']);
         $page = deleteAllBetween('/{', '}', Route::getFacadeRoot()->current()->uri());
         $currentPermission = \App\Models\Permission::where('link', request()->route()->getName())->first();
 
